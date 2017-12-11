@@ -47,7 +47,7 @@ return array(
             'forceTranslation' => true,
         ),
         'user' => array(
-            'loginUrl' => array('site/auth'),
+            'loginUrl' => array('site/login'),
         ),
     ),
     'modules' => array(

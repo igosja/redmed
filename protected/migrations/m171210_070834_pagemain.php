@@ -27,6 +27,8 @@ class m171210_070834_pagemain extends CDbMigration
             'seo_keywords_ru' => 'text',
             'seo_keywords_uk' => 'text',
         ));
+
+        $this->insert('pagemain', array('id' => null));
     }
 
     public function down()

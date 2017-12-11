@@ -203,6 +203,24 @@
         </div>
     </div>
 </footer>
+<section class="overlay-forms">
+    <div class="form-overlay"></div>
+    <div class="wrap">
+        <!-- Забыли пароль? -->
+        <div class="of-form e-form form-password">
+            <form action="">
+                <div class="e-form__t">
+                    <div class="e-form__title">Забыли пароль?</div>
+                    <p>Введите свой E-mail,<br />
+                        чтоб мы могли отправить Вам новый пароль!</p>
+                    <input type="email" class="e-form__input" placeholder="Email">
+                    <input type="submit" class="e-form__submit" value="Напомнить" >
+                </div>
+                <a href="javascript:;" class="of-close"></a>
+            </form>
+        </div>
+    </div>
+</section>
 <script src="/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js?v=<?= filemtime(__DIR__ . '/../../../js/vendor/modernizr-2.6.2-respond-1.1.0.min.js'); ?>"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.11.0.min.js"><\/script>')</script>

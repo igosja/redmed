@@ -26,6 +26,8 @@ class m171210_065814_contact extends CDbMigration
             'seo_keywords_ru' => 'text',
             'seo_keywords_uk' => 'text',
         ));
+
+        $this->insert('contact', array('id' => null));
     }
 
     public function down()
