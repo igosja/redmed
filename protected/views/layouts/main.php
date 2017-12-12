@@ -93,11 +93,14 @@
                                 array('profile/order')
                             ); ?>
                             <?= CHtml::link(
-                                Yii::t('views.layouts.main', 'header-link-order'),
-                                array('profile/order')
+                                Yii::t('views.layouts.main', 'header-link-info'),
+                                array('profile/info'),
+                                array('style' => 'width:145px;')
                             ); ?>
-                        <a href="" style="width:145px;">Полезная информация</a>
-                        <a href="">Выйти</a>
+                            <?= CHtml::link(
+                                Yii::t('views.layouts.main', 'header-link-logout'),
+                                array('profile/logout')
+                            ); ?>
                         <?php } ?>
                     </div>
                 </div>
@@ -160,8 +163,8 @@
                         </li>
                         <li>
                             <?= CHtml::link(
-                                Yii::t('views.layouts.main', 'header-link-specialist'),
-                                array('specialist/index')
+                                Yii::t('views.layouts.main', 'header-link-news'),
+                                array('news/index')
                             ); ?>
                         </li>
                     </ul>
@@ -184,10 +187,6 @@
     <div class="footer-top">
         <div class="wrap clearfix">
             <div class="footer-top__menu">
-                <?= CHtml::link(
-                    Yii::t('views.layouts.main', 'footer-link-abount'),
-                    array('about/index')
-                ); ?>
                 <?= CHtml::link(
                     Yii::t('views.layouts.main', 'footer-link-about'),
                     array('about/index')

@@ -85,10 +85,10 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="javascript:">Новости<span class="fa arrow"></span></a>
+                        <a href="javascript:">Статьи<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <?= CHtml::link('Новости', array('news/index')); ?>
+                                <?= CHtml::link('Статьи', array('news/index')); ?>
                             </li>
                             <li>
                                 <?= CHtml::link('SEO', array('pagenews/index')); ?>
@@ -114,17 +114,6 @@
                             </li>
                             <li>
                                 <?= CHtml::link('Категории', array('usertype/index')); ?>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:">Статьи<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <?= CHtml::link('Статьи', array('article/index')); ?>
-                            </li>
-                            <li>
-                                <?= CHtml::link('SEO', array('pagearticle/index')); ?>
                             </li>
                         </ul>
                     </li>
