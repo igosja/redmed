@@ -9,6 +9,8 @@
 <!--[if IE 8]>        +<html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js homepage"> <!--<![endif]-->
 <head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title><?= $this->seo_title; ?></title>
@@ -40,35 +42,63 @@
                 <a href="javascript:" class="header__phones__show"></a>
                 <div class="header__phones">
                     <div class="header__phones__down">
-                        <span><? $this->o_contact['phone_city']; ?></span>
-                        <span><? $this->o_contact['phone_kyiv']; ?></span>
+                        <span><?= $this->o_contact['phone_city']; ?></span>
+                        <span><?= $this->o_contact['phone_kyiv']; ?></span>
                     </div>
                 </div>
                 <div class="header__adress">
                     <a href="javascript:" class="header__adress__show"></a>
                     <div class="header__adress__down">
-                        <span><? $this->o_contact['address_' . Yii::app()->language]; ?></span>
-                        <a href="">Показать на карте</a>
+                        <span><?= $this->o_contact['address_' . Yii::app()->language]; ?></span>
+                        <a href="javascript:"><?= Yii::t('views.layouts.main', 'header-link-on-map'); ?></a>
                     </div>
                 </div>
                 <div class="header__lang">
-                    <div class="jqui-lang">
-                        <select name="" id="">
-                            <option value=""  selected="">Укр</option>
-                            <option value="" >Рус</option>
-                        </select>
-                    </div>
+                    <?php $form = $this->beginWidget('CActiveForm', array(
+                        'enableAjaxValidation' => false,
+                        'enableClientValidation' => true,
+                        'htmlOptions' => array('class' => 'jqui-lang'),
+                    )); ?>
+                    <?= CHtml::dropDownList(
+                        'language',
+                        Yii::app()->language,
+                        CHtml::listData($this->a_language, 'code', 'name'),
+                        array('id' => 'language-select')
+                    ); ?>
+                        <?php $this->endWidget(); ?>
                 </div>
                 <div class="header__cab">
-                    <span>Мой кабинет</span>
+                    <span><?= Yii::t('views.layouts.main', 'header-my-room'); ?></span>
                     <div class="header__cab__show">
-                        <a href="index-enter.html">Вход</a>
-                        <a href="index-registration.html">Регистрация</a>
-                        <!--<a href="">Мой профиль</a>
-                        <a href="">Товары</a>
-                        <a href="">Мои заказы</a>
+                        <?php if (Yii::app()->user->isGuest) { ?>
+                            <?= CHtml::link(
+                                Yii::t('views.layouts.main', 'header-link-login'),
+                                array('site/login')
+                            ); ?>
+                            <?= CHtml::link(
+                                Yii::t('views.layouts.main', 'header-link-signup'),
+                                array('site/signup')
+                            ); ?>
+                        <?php } else { ?>
+                            <?= CHtml::link(
+                                Yii::t('views.layouts.main', 'header-link-profile'),
+                                array('profile/index')
+                            ); ?>
+                            <?= CHtml::link(
+                                Yii::t('views.layouts.main', 'header-link-product'),
+                                array('profile/product')
+                            ); ?>
+                            <?= CHtml::link(
+                                Yii::t('views.layouts.main', 'header-link-order'),
+                                array('profile/order')
+                            ); ?>
+                            <?= CHtml::link(
+                                Yii::t('views.layouts.main', 'header-link-order'),
+                                array('profile/order')
+                            ); ?>
                         <a href="" style="width:145px;">Полезная информация</a>
-                        <a href="">Выйти</a>-->
+                        <a href="">Выйти</a>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
@@ -180,9 +210,9 @@
                 ); ?>
             </div>
             <div class="footer-top__info">
-                <a href="" class="facebook-btn"></a>
-                <a href="" class="twitter-btn"></a>
-                <a href="" class="youtube-btn"></a>
+                <?php foreach ($this->a_social as $item) { ?>
+                    <a href="<?= $item['url'] ? $item['url'] : 'javascript:'; ?>" class="<?= $item['css']; ?>" target="_blank"></a>
+                <?php } ?>
                 <a href="javascript:" class="to-top"></a>
             </div>
         </div>
@@ -191,12 +221,12 @@
         <div class="wrap clearfix">
             <div class="footer-copyright">
                 <img src="/img/logo-bottom.png" alt="RedMed">
-                © <?= date('Y'); ?>—2015
-                <?= Yii::t('views.layouts.main', 'reserved') ?>
+                © 2008—<?= date('Y'); ?>
+                <?= Yii::t('views.layouts.main', 'reserved'); ?>
             </div>
             <div class="footer-frog">
                 <a href="javascript:" target="_blank">
-                    <?= Yii::t('views.layouts.main', 'development') ?>
+                    <?= Yii::t('views.layouts.main', 'development'); ?>
                     —<img src="/img/frog.png" alt="Gabbe">
                 </a>
             </div>
@@ -210,21 +240,21 @@
         <div class="of-form e-form form-password">
             <form action="">
                 <div class="e-form__t">
-                    <div class="e-form__title">Забыли пароль?</div>
-                    <p>Введите свой E-mail,<br />
-                        чтоб мы могли отправить Вам новый пароль!</p>
+                    <div class="e-form__title"><?= Yii::t('views.overlay.password', 'title'); ?></div>
+                    <p><?= Yii::t('views.overlay.password', 'text'); ?></p>
                     <input type="email" class="e-form__input" placeholder="Email">
                     <input type="submit" class="e-form__submit" value="Напомнить" >
                 </div>
-                <a href="javascript:;" class="of-close"></a>
+                <a href="javascript:" class="of-close"></a>
             </form>
         </div>
     </div>
 </section>
 <script src="/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js?v=<?= filemtime(__DIR__ . '/../../../js/vendor/modernizr-2.6.2-respond-1.1.0.min.js'); ?>"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
 <script src="/js/vendor/libs.js?v=<?= filemtime(__DIR__ . '/../../../css/site.css'); ?>"></script>
+<?php if ('contact' == $this->uniqueid) { ?>
+    <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyAYBg8KC7jzGXqsJO4ZvBUBr-zHT_0qm2s"></script>
+<?php } ?>
 <script src="/js/main.js?v=<?= filemtime(__DIR__ . '/../../../js/main.js'); ?>"></script>
 <script src="/js/site.js?v=<?= filemtime(__DIR__ . '/../../../js/site.js'); ?>"></script>
 </body>

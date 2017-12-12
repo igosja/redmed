@@ -32,11 +32,18 @@
         <ul class="nav navbar-top-links navbar-right">
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="true">
-                    <span class="badge">123</span>
+                    <span class="badge"><?= ($this->notification ? $this->notification : ''); ?></span>
                     <i class="fa fa-envelope fa-fw"></i>
                     <i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-messages">
+                    <li>
+                        <?= CHtml::link(
+                            '<span class="badge">' . ($this->feedback ? $this->feedback : '') . '</span> Вопросы',
+                            array('feedback/index')
+                        ); ?>
+                    </li>
+                    <li class="divider"></li>
                 </ul>
             </li>
             <li class="dropdown">

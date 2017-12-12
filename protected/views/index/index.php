@@ -5,18 +5,22 @@
 ?>
 <section class="content">
     <div class="m-slider owl-carousel" id="slider">
-        <div class="item" style="background: url(/img/slider-1.jpg) center top no-repeat;">
-            <div class="wrap">
-                <h2 class="m-slider__title">Red Med - современные технологии,<br />качество и надежность</h2>
-                <a href="" class="btn-more">Подробнее</a>
+        <?php foreach ($a_slide as $item) { ?>
+            <div class="item" style="background: url(<?= ImageIgosja::resize($item['image_id'], 1920, 590) ?>) center top no-repeat;">
+                <div class="wrap">
+                    <h2 class="m-slider__title">
+                        <?= $item['text_' . Yii::app()->language] ? nl2br($item['text_' . Yii::app()->language]) : ''; ?>
+                    </h2>
+                    <?php if ($item['url']) { ?>
+                        <div class="centered">
+                            <a href="<?= $item['url']; ?>" class="btn-more">
+                                <?= $item['link_' . Yii::app()->language] ? $item['link_' . Yii::app()->language] : ''; ?>
+                            </a>
+                        </div>
+                    <?php } ?>
+                </div>
             </div>
-        </div>
-        <div class="item" style="background: url(/img/slider-2.jpg) center top no-repeat;">
-            <div class="wrap">
-                <h2 class="m-slider__title">Red Med - современные технологии,<br />качество и надежность</h2>
-                <a href="" class="btn-more">Подробнее</a>
-            </div>
-        </div>
+        <?php } ?>
     </div>
     <div class="m-cat clearfix">
         <div class="wrap">
@@ -96,7 +100,7 @@
     <div class="b-brands">
         <div class="wrap">
             <div class="title">
-                Бренды
+                <?= Yii::t('views.index.index', 'brands'); ?>
             </div>
             <div class="brands owl-carousel">
                 <div class="item">
