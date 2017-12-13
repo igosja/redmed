@@ -1,5 +1,6 @@
 <?php
 /**
+ * @var $a_slide array
  * @var $o_page PageMain
  */
 ?>
