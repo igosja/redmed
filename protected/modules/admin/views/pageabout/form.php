@@ -1,7 +1,7 @@
 <?php
 /**
  * @var $form CActiveForm
- * @var $model PageMain
+ * @var $model PageAbout
  */
 ?>
 <div class="row">
@@ -23,6 +23,7 @@
         <?php $form = $this->beginWidget('CActiveForm', array(
             'enableAjaxValidation' => false,
             'enableClientValidation' => true,
+            'htmlOptions' => array('enctype' => 'multipart/form-data'),
         )); ?>
         <ul class="nav nav-tabs">
             <li class="active"><a href="#main" data-toggle="tab">Общая информация</a></li>
@@ -46,6 +47,21 @@
                         </td>
                     </tr>
                     <tr>
+                        <td class="col-lg-3"><?= $form->labelEx($model, 'image_id'); ?></td>
+                        <td>
+                            <?php if (isset($model['image']['url'])) { ?>
+                                <div class="col-lg-6">
+                                    <a href="javascript:" class="thumbnail">
+                                        <img src="<?= $model['image']['url'] ?>"/>
+                                    </a>
+                                </div>
+                                <?= CHtml::link('<i class="fa fa-times"></i>', array('image', 'id' => $model['image_id'])); ?>
+                            <?php } else { ?>
+                                <input type="file" name="image" class="form-control"/>
+                            <?php } ?>
+                        </td>
+                    </tr>
+                    <tr>
                         <td class="col-lg-3"><?= $form->labelEx($model, 'title_1_ru'); ?></td>
                         <td>
                             <?= $form->textField($model, 'title_1_ru', array('class' => 'form-control')); ?>
@@ -60,17 +76,31 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="col-lg-3"><?= $form->labelEx($model, 'text_1_ru'); ?></td>
+                        <td class="col-lg-3"><?= $form->labelEx($model, 'text_11_ru'); ?></td>
                         <td>
-                            <?= $form->textArea($model, 'text_1_ru', array('class' => 'ckeditor')); ?>
-                            <?= $form->error($model, 'text_1_ru'); ?>
+                            <?= $form->textArea($model, 'text_11_ru', array('class' => 'ckeditor')); ?>
+                            <?= $form->error($model, 'text_11_ru'); ?>
                         </td>
                     </tr>
                     <tr>
-                        <td class="col-lg-3"><?= $form->labelEx($model, 'text_1_uk'); ?></td>
+                        <td class="col-lg-3"><?= $form->labelEx($model, 'text_11_uk'); ?></td>
                         <td>
-                            <?= $form->textArea($model, 'text_1_uk', array('class' => 'ckeditor')); ?>
-                            <?= $form->error($model, 'text_1_uk'); ?>
+                            <?= $form->textArea($model, 'text_11_uk', array('class' => 'ckeditor')); ?>
+                            <?= $form->error($model, 'text_11_uk'); ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-lg-3"><?= $form->labelEx($model, 'text_12_ru'); ?></td>
+                        <td>
+                            <?= $form->textArea($model, 'text_12_ru', array('class' => 'ckeditor')); ?>
+                            <?= $form->error($model, 'text_12_ru'); ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-lg-3"><?= $form->labelEx($model, 'text_12_uk'); ?></td>
+                        <td>
+                            <?= $form->textArea($model, 'text_12_uk', array('class' => 'ckeditor')); ?>
+                            <?= $form->error($model, 'text_12_uk'); ?>
                         </td>
                     </tr>
                     <tr>
