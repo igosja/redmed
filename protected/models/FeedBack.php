@@ -21,11 +21,11 @@ class FeedBack extends CActiveRecord
     {
         return array(
             'date' => 'Время',
-            'email' => Yii::t('models.Model', 'label-email'),
-            'name' => Yii::t('models.Model', 'label-name'),
-            'phone' => Yii::t('models.Model', 'label-phone'),
+            'email' => Yii::t('models.FeedBack', 'label-email'),
+            'name' => Yii::t('models.FeedBack', 'label-name'),
+            'phone' => Yii::t('models.FeedBack', 'label-phone'),
             'status' => 'Статус',
-            'text' => Yii::t('models.Model', 'label-text'),
+            'text' => Yii::t('models.FeedBack', 'label-text'),
         );
     }
 

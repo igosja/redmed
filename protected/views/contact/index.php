@@ -6,7 +6,11 @@
  */
 ?>
 <section class="content">
-    <?= $this->renderPartial('/include/bread'); ?>
+    <div class="breadchambs">
+        <div class="wrap">
+            <?= $o_page['h1_' . Yii::app()->language]; ?>
+        </div>
+    </div>
     <div class="clearfix in-page wrap">
         <div class="clearfix">
             <h2 class="title"><?= $o_page['name_' . Yii::app()->language]; ?></h2>
@@ -15,12 +19,10 @@
                     <?= $o_page['address_' . Yii::app()->language]; ?><br />
                     <a href="#map"><?= Yii::t('views.contact.index', 'link-map'); ?></a>
                 </div>
-
             </div>
             <div class="contacts-i">
                 <strong><?= $o_page['phone_city']; ?></strong>
                 <strong><?= $o_page['phone_life']; ?></strong>
-
             </div>
             <div class="contacts-i">
                 <a href="<?= $o_page['email']; ?>"><?= $o_page['email']; ?></a>
@@ -57,7 +59,10 @@
                     'placeholder' => Yii::t('views.contact.index', 'placeholder-text')
                 )); ?>
             </div>
-            <?= CHtml::submitButton(Yii::t('views.contact.index', 'button-submit'), array('class' => 'btn-more')); ?>
+            <?= CHtml::submitButton(
+                Yii::t('views.contact.index', 'button-submit'),
+                array('class' => 'btn-more')
+            ); ?>
             <?php $this->endWidget(); ?>
         </div>
     </div>

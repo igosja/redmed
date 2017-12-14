@@ -96,6 +96,17 @@
                         </ul>
                     </li>
                     <li>
+                        <a href="javascript:">Отзывы<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <?= CHtml::link('Отзывы', array('review/index')); ?>
+                            </li>
+                            <li>
+                                <?= CHtml::link('SEO', array('pagereview/index')); ?>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
                         <a href="javascript:">Партнёры<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
