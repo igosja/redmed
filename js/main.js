@@ -15,10 +15,15 @@ function initialize(lat, lng) {
 }
 
 function initializeDon() {
- var locations = [
-      ['', 50.4469359, 30.4685125, 1],
-      ['', 50.4142905, 30.64363, 2]
-    ];
+    var items = $('.contacts-i');
+    var locations = [];
+    for (var i = 0; i<items.length; i++) {
+        locations.push([
+            $(items[i]).data('name'),
+            $(items[i]).data('lat'),
+            $(items[i]).data('lng'),
+        ]);
+    }
 
     var map = new google.maps.Map(document.getElementById('map-don'), {
       zoom: 11,
@@ -26,7 +31,7 @@ function initializeDon() {
     });
 
 
-    var marker, i;
+    var marker;
     var image = '/img/map-icon.png';
     for (i = 0; i < locations.length; i++) {  
       marker = new google.maps.Marker({

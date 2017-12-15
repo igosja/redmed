@@ -1,7 +1,7 @@
 <?php
 /**
  * @var $form  CActiveForm
- * @var $model Slide
+ * @var $model Brand
  */
 ?>
 <div class="row">

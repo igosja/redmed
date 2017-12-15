@@ -1,5 +1,6 @@
 <?php
 /**
+ * @var $a_donor array
  * @var $o_page PageDonor
  */
 ?>
@@ -23,7 +24,6 @@
                     <?= $o_page['text_1_' . Yii::app()->language]; ?>
                 </div>
             </div>
-
             <div class="don-three__i">
                 <img src="/img/don-three-i-2.png" alt="">
                 <div class="don-three__i__title">
@@ -33,7 +33,6 @@
                     <?= $o_page['text_2_' . Yii::app()->language]; ?>
                 </div>
             </div>
-
             <div class="don-three__i">
                 <img src="/img/don-three-i-3.png" alt="">
                 <div class="don-three__i__title">
@@ -48,20 +47,22 @@
     <div class="don-adr">
         <div class="wrap clearfix">
             <h2 class="title"><?= Yii::t('views.donor.index', 'where'); ?></h2>
-            <div class="contacts-i">
-                <div class="contacts-i__adress">
-                    01051, Киев, ул. Ревуцького, 8, офис 15<br>
+            <?php foreach ($a_donor as $item) { ?>
+                <div
+                        class="contacts-i"
+                        data-lat="<?= $item['lat']; ?>"
+                        data-lng="<?= $item['lng']; ?>"
+                        data-name="<?= $item['h1_' . Yii::app()->language]; ?>"
+                >
+                    <div class="contacts-i__adress">
+                        <?= $item['address_' . Yii::app()->language]; ?>
+                    </div>
+                    <strong><?= $item['phone_city']; ?></strong>
+                    <?php if ($item['phone_mobile']) { ?>
+                        <strong><?= $item['phone_mobile']; ?></strong>
+                    <?php } ?>
                 </div>
-                <strong>044 482 36 02</strong>
-                <strong>093 129 80 46</strong>
-            </div>
-            <div class="contacts-i">
-                <div class="contacts-i__adress">
-                    01051, Киев, ул. Борщаговская, 23, офис 1<br>
-                </div>
-                <strong>044 482 36 00</strong>
-                <strong>096 129 80 46</strong>
-            </div>
+            <?php } ?>
         </div>
     </div>
     <div id="map-don"></div>

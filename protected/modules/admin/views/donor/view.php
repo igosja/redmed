@@ -1,6 +1,6 @@
 <?php
 /**
- * @var $model Brand
+ * @var $model Slide
  */
 ?>
     <div class="row">
@@ -28,18 +28,13 @@
 $attributes = array(
     'id',
     'h1_ru',
+    'address_ru',
     'h1_uk',
-    array(
-        'name' => 'image_id',
-        'type' => 'raw',
-        'value' => (isset($model['image']['url'])) ?
-            ('<div class="col-lg-6">
-                <a href="javascript:;" class="thumbnail">
-                    <img src="' . $model['image']['url'] . '"/>
-                </a>
-            </div>') :
-            '',
-    ),
+    'address_uk',
+    'phone_city',
+    'phone_mobile',
+    'lat',
+    'lng',
 );
 $this->widget('zii.widgets.CDetailView', array(
     'attributes' => $attributes,

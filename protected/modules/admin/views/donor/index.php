@@ -1,6 +1,6 @@
 <?php
 /**
- * @var $model Brand
+ * @var $model Slide
  */
 ?>
 <div class="row">
