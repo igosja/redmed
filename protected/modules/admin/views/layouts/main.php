@@ -107,13 +107,13 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="javascript:">Партнёры<span class="fa arrow"></span></a>
+                        <a href="javascript:">Бренды<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <?= CHtml::link('Партнёры', array('partner/index')); ?>
+                                <?= CHtml::link('Бренды', array('brand/index')); ?>
                             </li>
                             <li>
-                                <?= CHtml::link('SEO', array('pagepartner/index')); ?>
+                                <?= CHtml::link('SEO', array('pagebrand/index')); ?>
                             </li>
                         </ul>
                     </li>
