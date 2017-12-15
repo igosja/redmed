@@ -158,13 +158,15 @@
                         <li>
                             <?= CHtml::link(
                                 Yii::t('views.layouts.main', 'header-link-donor'),
-                                array('donor/index')
+                                array('donor/index'),
+                                array('class' => 'nav-btn')
                             ); ?>
                         </li>
                         <li>
                             <?= CHtml::link(
                                 Yii::t('views.layouts.main', 'header-link-news'),
-                                array('news/index')
+                                array('news/index'),
+                                array('class' => 'nav-btn')
                             ); ?>
                         </li>
                     </ul>
@@ -251,7 +253,7 @@
 </section>
 <script src="/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js?v=<?= filemtime(__DIR__ . '/../../../js/vendor/modernizr-2.6.2-respond-1.1.0.min.js'); ?>"></script>
 <script src="/js/vendor/libs.js?v=<?= filemtime(__DIR__ . '/../../../css/site.css'); ?>"></script>
-<?php if ('contact' == $this->uniqueid) { ?>
+<?php if (in_array($this->uniqueid, array('contact', 'donor'))) { ?>
     <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyAYBg8KC7jzGXqsJO4ZvBUBr-zHT_0qm2s"></script>
 <?php } ?>
 <script src="/js/main.js?v=<?= filemtime(__DIR__ . '/../../../js/main.js'); ?>"></script>

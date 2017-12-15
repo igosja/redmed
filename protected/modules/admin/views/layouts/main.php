@@ -118,6 +118,17 @@
                         </ul>
                     </li>
                     <li>
+                        <a href="javascript:">Донорам<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <?= CHtml::link('Места сдачи крови', array('donor/index')); ?>
+                            </li>
+                            <li>
+                                <?= CHtml::link('SEO', array('pagedonor/index')); ?>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
                         <a href="javascript:">Пользователи<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
