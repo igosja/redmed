@@ -4,6 +4,7 @@
 
 class Controller extends CController
 {
+    public $a_category = array();
     public $a_language = array();
     public $a_social = array();
     public $breadcrumbs = array();
@@ -40,14 +41,17 @@ class Controller extends CController
     {
         $this->a_language = Language::model()->findAllByAttributes(
             array('status' => 1),
-            array('select' => array('code', 'name'), 'order' => '`order`')
+            array('select' => array('code', 'name'), 'order' => '`order` ASC')
         );
         if ($language = Yii::app()->request->getQuery('language')) {
             Yii::app()->language = $language;
         } else {
-            $language = Language::model()->find(array('select' => array('code'), 'order' => '`order`'));
+            $language = Language::model()->find(array('select' => array('code'), 'order' => '`order` ASC'));
             Yii::app()->language = $language['code'];
         }
+        $this->a_category = Category::model()->findAllByAttributes(
+            array('status' => 1), array('order' => '`order` ASC')
+        );
         $this->a_social = Social::model()->findAllByAttributes(
             array('status' => 1), array('order' => '`order` ASC')
         );

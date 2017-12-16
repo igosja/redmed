@@ -4,7 +4,7 @@ class BrandController extends Controller
 {
     public function actionIndex()
     {
-        $a_brand = Brand::model()->findAllByAttributes(array('status' => 1), array('order' => '`order`'));
+        $a_brand = Brand::model()->findAllByAttributes(array('status' => 1), array('order' => '`order` ASC'));
         $o_page = PageBrand::model()->findByPk(1);
         $this->setSEO($o_page);
         $this->breadcrumbs = array(

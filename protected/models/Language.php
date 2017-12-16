@@ -12,7 +12,7 @@ class Language extends CActiveRecord
         return array(
             array('code', 'length', 'max' => 5),
             array('name', 'length', 'max' => 255),
-            array('id, order, status', 'numerical', 'integerOnly' => true),
+            array('id, order, status', 'numerical'),
         );
     }
 
@@ -21,7 +21,6 @@ class Language extends CActiveRecord
         return array(
             'code' => 'Код',
             'name' => 'Название',
-            'order' => 'Порядок',
             'status' => 'Статус',
         );
     }

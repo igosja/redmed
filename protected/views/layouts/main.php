@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="/css/main.css?v=<?= filemtime(__DIR__ . '/../../../css/main.css'); ?>">
     <!--<link rel="stylesheet" href="css/mobile.css">-->
     <link rel="stylesheet" href="/css/site.css?v=<?= filemtime(__DIR__ . '/../../../css/site.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
 </head>
 <body>
 <!--[if lt IE 7]>
@@ -99,7 +100,7 @@
                             ); ?>
                             <?= CHtml::link(
                                 Yii::t('views.layouts.main', 'header-link-logout'),
-                                array('profile/logout')
+                                array('site/logout')
                             ); ?>
                         <?php } ?>
                     </div>
@@ -124,16 +125,20 @@
                             ); ?>
                         </li>
                         <li class="nav-h">
-                            <a href="javascript:" class="nav__arrow">
-                                <?= Yii::t('views.layouts.main', 'header-link-catalog'); ?>
-                            </a>
+                            <?= CHtml::link(
+                                Yii::t('views.layouts.main', 'header-link-catalog'),
+                                array('category/index'),
+                                array('class' => 'nav__arrow')
+                            ); ?>
                             <div class="nav__drop">
                                 <div>
-                                    <a href="index-catalog.html" style="background: url(/img/menu-icons/1.png) left center no-repeat;">Контейнеры для взятия крови</a>
-                                    <a href="index-catalog.html" style="background: url(/img/menu-icons/2.png) left center no-repeat;">Донорские кресла</a>
-                                    <a href="index-catalog.html" style="background: url(/img/menu-icons/3.png) left center no-repeat;">Холодильное оборудование для элементов крови</a>
-                                    <a href="index-catalog.html" style="background: url(/img/menu-icons/4.png) left center no-repeat;">Пробирки для взятия крови для анализов</a>
-                                    <a href="index-catalog.html" style="background: url(/img/menu-icons/5.png) left center no-repeat;">Оборудование для службы крови</a>
+                                    <?php foreach ($this->a_category as $item) { ?>
+                                        <?= CHtml::link(
+                                            Yii::t('views.layouts.main', $item['h1_' . Yii::app()->language]),
+                                            array('catalog/index', 'id' => $item['url']),
+                                            array('style' => 'background: url(' . ImageIgosja::resize($item['image_id'], 26, 26, 0) . ') left center no-repeat;')
+                                        ); ?>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </li>
@@ -258,5 +263,6 @@
 <?php } ?>
 <script src="/js/main.js?v=<?= filemtime(__DIR__ . '/../../../js/main.js'); ?>"></script>
 <script src="/js/site.js?v=<?= filemtime(__DIR__ . '/../../../js/site.js'); ?>"></script>
+<script type="text/javascript" src="http://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
 </body>
 </html>

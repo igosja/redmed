@@ -11,7 +11,7 @@ class Brand extends CActiveRecord
     {
         return array(
             array('h1_ru, h1_uk', 'length', 'max' => 255),
-            array('id, order, status', 'numerical'),
+            array('id, image_id, order, status', 'numerical'),
         );
     }
 

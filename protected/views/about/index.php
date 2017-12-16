@@ -25,45 +25,7 @@
             <h2 class="title"><?= $o_page['title_2_' . Yii::app()->language]; ?></h2>
             <?= $o_page['text_2_' . Yii::app()->language]; ?>
             <div class="clearfix m-cat_in">
-                <div class="m-cat__i">
-                    <img src="img/m-cat/cat-1.png" alt="">
-                    <div class="m-cat__i__title">
-                        Контейнеры для крови
-                    </div>
-                    <a href="" class="btn-more">Смотреть</a>
-                </div>
-
-                <div class="m-cat__i">
-                    <img src="img/m-cat/cat-2.png" alt="">
-                    <div class="m-cat__i__title">
-                        Донорские кресла
-                    </div>
-                    <a href="" class="btn-more">Смотреть</a>
-                </div>
-
-                <div class="m-cat__i">
-                    <img src="img/m-cat/cat-3.png" alt="">
-                    <div class="m-cat__i__title">
-                        Холодильное оборудование для элементов крови
-                    </div>
-                    <a href="" class="btn-more">Смотреть</a>
-                </div>
-
-                <div class="m-cat__i">
-                    <img src="img/m-cat/cat-4.png" alt="">
-                    <div class="m-cat__i__title">
-                        Контейнеры для крови
-                    </div>
-                    <a href="" class="btn-more">Смотреть</a>
-                </div>
-
-                <div class="m-cat__i">
-                    <img src="img/m-cat/cat-5.png" alt="">
-                    <div class="m-cat__i__title">
-                        Оборудование<br/> для службы крови
-                    </div>
-                    <a href="" class="btn-more">Смотреть</a>
-                </div>
+                <?= $this->renderPartial('/include/catalog'); ?>
             </div>
         </div>
     </div>

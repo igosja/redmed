@@ -77,9 +77,6 @@
                                 <?= CHtml::link('Категории', array('category/index')); ?>
                             </li>
                             <li>
-                                <?= CHtml::link('Разделы', array('chapter/index')); ?>
-                            </li>
-                            <li>
                                 <?= CHtml::link('SEO', array('pagecatalog/index')); ?>
                             </li>
                         </ul>

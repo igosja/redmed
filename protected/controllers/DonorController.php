@@ -4,7 +4,7 @@ class DonorController extends Controller
 {
     public function actionIndex()
     {
-        $a_donor = Donor::model()->findAllByAttributes(array('status' => 1), array('order' => '`order`'));
+        $a_donor = Donor::model()->findAllByAttributes(array('status' => 1), array('order' => '`order` ASC'));
         $o_page = PageDonor::model()->findByPk(1);
         $this->setSEO($o_page);
         $this->breadcrumbs = array(

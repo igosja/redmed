@@ -17,11 +17,11 @@ function initialize(lat, lng) {
 function initializeDon() {
     var items = $('.contacts-i');
     var locations = [];
-    for (var i = 0; i<items.length; i++) {
+    for (var i=0; i<items.length; i++) {
         locations.push([
             $(items[i]).data('name'),
             $(items[i]).data('lat'),
-            $(items[i]).data('lng'),
+            $(items[i]).data('lng')
         ]);
     }
 
@@ -225,32 +225,41 @@ jQuery(document).ready(function ($) {
       $('.slider').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
+        dots: false,
         infinite: false,
-        fade: true,
         cssEase: 'linear',
-        variableWidth: false,
-        variableHeight: false,
-        centerMode: false,
+        fade: true,
         asNavFor: '.slider-nav',
         prevArrow: $('.prev'),
         nextArrow: $('.next')
       });
-    }
 
-    if ($(".slider").length) {
       $('.slider-nav').slick({
-        slidesToShow: 6,
+        slidesToShow: 4,
         slidesToScroll: 1,
         asNavFor: '.slider',
-        vertical: false,
+        vertical: true,
         dots: false,
+        focusOnSelect: true,
+        loop: false,
         arrows: false,
-        infinite: false
+        dots: false,
+        infinite: false,
       });
+
     }
+
     $('.jqui-select > select').selectmenu();
 
 
+    $('.same').owlCarousel({
+      items:4,  
+      loop:true,
+      margin:30,
+      nav:true,
+      dots:true,
+      navText:false
+    });
 
     /*============== mobile ==============*/
     $(".show-m-menu").click(function (e) {

@@ -12,6 +12,7 @@ class Donor extends CActiveRecord
         return array(
             array('address_ru, address_uk, h1_ru, h1_uk, phone_city, phone_mobile', 'length', 'max' => 255),
             array('lat, lng, order, status', 'numerical'),
+            array('address_ru, address_uk, h1_ru, h1_uk, phone_city, lat, lng', 'required'),
         );
     }
 
