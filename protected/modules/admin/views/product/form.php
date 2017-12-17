@@ -133,10 +133,22 @@
                         </td>
                     </tr>
                     <tr>
+                        <td class="col-lg-3"><?= $form->labelEx($model, 'table_ru_excel'); ?></td>
+                        <td>
+                            <input type="file" name="table_ru_excel" class="form-control" />
+                        </td>
+                    </tr>
+                    <tr>
                         <td class="col-lg-3"><?= $form->labelEx($model, 'table_uk'); ?></td>
                         <td>
                             <?= $form->textArea($model, 'table_uk', array('class' => 'form-control')); ?>
                             <?= $form->error($model, 'table_uk'); ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-lg-3"><?= $form->labelEx($model, 'table_uk_excel'); ?></td>
+                        <td>
+                            <input type="file" name="table_uk_excel" class="form-control" />
                         </td>
                     </tr>
                     <tr>

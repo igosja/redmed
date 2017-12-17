@@ -14,28 +14,30 @@ class User extends CActiveRecord
         return array(
             array('address, email, name, phone', 'required', 'on' => 'edit'),
             array('login, password', 'required', 'on' => 'login'),
-            array('address, email, name, phone', 'required', 'on' => 'signup'),
-            array('address, email, login, name, phone, password_new', 'length', 'max' => 255),
+            array('address, email, name, phone, usertype', 'required', 'on' => 'signup'),
+            array('address, email, login, name, phone, password_new, usertype', 'length', 'max' => 255),
             array('email', 'email'),
             array('email', 'unique'),
-            array('date, status, userrole_id, usertype_id', 'numerical'),
+            array('date, status, userrole_id', 'numerical'),
+            array('message', 'safe'),
         );
     }
 
     public function attributeLabels()
     {
         return array(
-            'address' => Yii::t('models.Model', 'label-address'),
+            'address' => Yii::t('models.User', 'label-address'),
             'date' => 'Дата регистрации',
             'email' => 'E-mail',
-            'login' => Yii::t('models.Model', 'label-login'),
-            'name' => Yii::t('models.Model', 'label-name'),
-            'password' => Yii::t('models.Model', 'label-password'),
+            'login' => Yii::t('models.User', 'label-login'),
+            'message' => Yii::t('models.User', 'label-message'),
+            'name' => Yii::t('models.User', 'label-name'),
+            'password' => Yii::t('models.User', 'label-password'),
             'password_new' => 'Пароль',
-            'phone' => Yii::t('models.Model', 'label-phone'),
+            'phone' => Yii::t('models.User', 'label-phone'),
             'status' => 'Статус',
             'userrole_id' => 'Роль в системе',
-            'usertype_id' => 'Тип пользователя',
+            'usertype' => Yii::t('models.User', 'label-usertype'),
         );
     }
 
@@ -47,17 +49,6 @@ class User extends CActiveRecord
             }
             if ($this->password_new) {
                 $this['password'] = $this->hashPassword($this->password_new);
-            }
-        }
-        return true;
-    }
-
-    public function beforeDelete()
-    {
-        if (parent::beforeDelete()) {
-            $a_userimage = UserImage::model()->findAllByAttributes(array('user_id' => $this->primaryKey));
-            foreach ($a_userimage as $item) {
-                $item->delete();
             }
         }
         return true;
@@ -81,7 +72,7 @@ class User extends CActiveRecord
         $contact = Contact::model()->findByPk(1);
         $mail = new Mail();
         $mail->setTo($contact['email_letter']);
-        $mail->setSubject('Новая регистриция на сайте ezmedix');
+        $mail->setSubject('Новая регистриция на сайте redmed');
         $mail->setHtml($text);
         $mail->send();
     }
@@ -103,7 +94,6 @@ class User extends CActiveRecord
         return array(
             'image' => array(self::HAS_MANY, 'UserImage', array('user_id' => 'id')),
             'userrole' => array(self::HAS_ONE, 'UserRole', array('id' => 'userrole_id')),
-            'usertype' => array(self::HAS_ONE, 'UserType', array('id' => 'usertype_id')),
         );
     }
 

@@ -39,11 +39,31 @@
                 <ul class="dropdown-menu dropdown-messages">
                     <li>
                         <?= CHtml::link(
+                            '<span class="badge">' . ($this->order ? $this->order : '') . '</span> Заказы',
+                            array('order/index')
+                        ); ?>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <?= CHtml::link(
                             '<span class="badge">' . ($this->feedback ? $this->feedback : '') . '</span> Вопросы',
                             array('feedback/index')
                         ); ?>
                     </li>
                     <li class="divider"></li>
+                    <li>
+                        <?= CHtml::link(
+                            '<span class="badge">' . ($this->review ? $this->review : '') . '</span> Отзывы',
+                            array('review/index')
+                        ); ?>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <?= CHtml::link(
+                            '<span class="badge">' . ($this->user ? $this->user : '') . '</span> Пользователи',
+                            array('user/index')
+                        ); ?>
+                    </li>
                 </ul>
             </li>
             <li class="dropdown">
@@ -58,9 +78,6 @@
                         <ul class="nav nav-second-level">
                             <li>
                                 <?= CHtml::link('Заказы', array('order/index')); ?>
-                            </li>
-                            <li>
-                                <?= CHtml::link('Доставка', array('shipping/index')); ?>
                             </li>
                         </ul>
                     </li>
@@ -130,9 +147,6 @@
                         <ul class="nav nav-second-level">
                             <li>
                                 <?= CHtml::link('Пользователи', array('user/index')); ?>
-                            </li>
-                            <li>
-                                <?= CHtml::link('Категории', array('usertype/index')); ?>
                             </li>
                         </ul>
                     </li>

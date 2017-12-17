@@ -22,65 +22,67 @@
     </div>
     <div class="clearfix in-page wrap">
         <div class="cat-l clearfix">
-            <h3 class="cat-l__title"><?= Yii::t('views.catalog.index', 'category'); ?></h3>
-            <ul class="cat-menu">
-                <?php foreach ($this->a_category as $item) { ?>
-                    <?php if ($item['url'] == Yii::app()->request->getQuery('id')) {
-                        $class = 'strong';
-                    } else {
-                        $class = '';
-                    } ?>
-                    <li>
-                        <?= CHtml::link(
-                            $item['h1_' . Yii::app()->language],
-                            array('index', 'id' => $item['url']),
-                            array('class' => $class)
-                        ); ?>
-                    </li>
-                <?php } ?>
-            </ul>
-            <h3 class="cat-l__title"><?= Yii::t('views.catalog.index', 'brand'); ?></h3>
-            <ul class="cat-radio">
-                <?php foreach ($a_brand as $item) { ?>
-                    <li>
-                        <div class="checkboxes">
-                            <input
-                                    id="brand-<?= $item['id']; ?>"
-                                    type="checkbox"
-                                    name="brand[]"
-                                    value="<?= $item['id']; ?>"
-                                <?php if (in_array($item['id'], Yii::app()->request->getQuery('brand', array()))) { ?>
-                                    checked
-                                <?php } ?>
-                            >
-                            <label for="brand-<?= $item['id']; ?>">
-                                <?= $item['h1_' . Yii::app()->language]; ?>
-                            </label>
-                        </div>
-                    </li>
-                <?php } ?>
-            </ul>
-            <h3 class="cat-l__title"><?= Yii::t('views.catalog.index', 'filter'); ?></h3>
-            <ul class="cat-radio">
-                <?php foreach ($a_filter as $item) { ?>
-                    <li>
-                        <div class="checkboxes">
-                            <input
-                                    id="filter-<?= $item['id']; ?>"
-                                    type="checkbox"
-                                    name="filter[]"
-                                    value="<?= $item['id']; ?>"
-                                <?php if (in_array($item['id'], Yii::app()->request->getQuery('filter', array()))) { ?>
-                                    checked
-                                <?php } ?>
-                            >
-                            <label for="filter-<?= $item['id']; ?>">
-                                <?= $item['h1_' . Yii::app()->language]; ?>
-                            </label>
-                        </div>
-                    </li>
-                <?php } ?>
-            </ul>
+            <form method="GET">
+                <h3 class="cat-l__title"><?= Yii::t('views.catalog.index', 'category'); ?></h3>
+                <ul class="cat-menu">
+                    <?php foreach ($this->a_category as $item) { ?>
+                        <?php if ($item['url'] == Yii::app()->request->getQuery('id')) {
+                            $class = 'strong';
+                        } else {
+                            $class = '';
+                        } ?>
+                        <li>
+                            <?= CHtml::link(
+                                $item['h1_' . Yii::app()->language],
+                                array('index', 'id' => $item['url']),
+                                array('class' => $class)
+                            ); ?>
+                        </li>
+                    <?php } ?>
+                </ul>
+                <h3 class="cat-l__title"><?= Yii::t('views.catalog.index', 'brand'); ?></h3>
+                <ul class="cat-radio">
+                    <?php foreach ($a_brand as $item) { ?>
+                        <li>
+                            <div class="checkboxes">
+                                <input
+                                        id="brand-<?= $item['id']; ?>"
+                                        type="checkbox"
+                                        name="brand[]"
+                                        value="<?= $item['id']; ?>"
+                                    <?php if (in_array($item['id'], Yii::app()->request->getQuery('brand', array()))) { ?>
+                                        checked
+                                    <?php } ?>
+                                >
+                                <label for="brand-<?= $item['id']; ?>">
+                                    <?= $item['h1_' . Yii::app()->language]; ?>
+                                </label>
+                            </div>
+                        </li>
+                    <?php } ?>
+                </ul>
+                <h3 class="cat-l__title"><?= Yii::t('views.catalog.index', 'filter'); ?></h3>
+                <ul class="cat-radio">
+                    <?php foreach ($a_filter as $item) { ?>
+                        <li>
+                            <div class="checkboxes">
+                                <input
+                                        id="filter-<?= $item['id']; ?>"
+                                        type="checkbox"
+                                        name="filter[]"
+                                        value="<?= $item['id']; ?>"
+                                    <?php if (in_array($item['id'], Yii::app()->request->getQuery('filter', array()))) { ?>
+                                        checked
+                                    <?php } ?>
+                                >
+                                <label for="filter-<?= $item['id']; ?>">
+                                    <?= $item['h1_' . Yii::app()->language]; ?>
+                                </label>
+                            </div>
+                        </li>
+                    <?php } ?>
+                </ul>
+            </form>
         </div>
         <div class="cat-r">
             <div class="clearfix">

@@ -48,6 +48,7 @@ class ProductController extends AController
                 }
                 $this->uploadImage($model->primaryKey);
                 $this->uploadPdf($model->primaryKey);
+                $this->uploadExcel($model->primaryKey);
                 $this->saveFilter($model->primaryKey);
                 Yii::app()->user->setFlash('success', $this->saved);
                 $this->redirect(array('view', 'id' => $model->primaryKey));
@@ -208,6 +209,27 @@ class ProductController extends AController
                 $model['order'] = $model['order'] + 1;
                 $model->save();
             }
+        }
+    }
+
+    public function uploadExcel($id)
+    {
+        if (isset($_FILES['table_ru_excel']['name']) && !empty($_FILES['table_ru_excel']['name'])) {
+            $file = $_FILES['table_ru_excel'];
+            $file = $file['tmp_name'];
+            $table = ExcelHelper::getTable($file);
+            $model = $this->getModel()->findByPk($id);
+            $model['table_ru'] = $table;
+            $model->save();
+        }
+
+        if (isset($_FILES['table_uk_excel']['name']) && !empty($_FILES['table_uk_excel']['name'])) {
+            $file = $_FILES['table_uk_excel'];
+            $file = $file['tmp_name'];
+            $table = ExcelHelper::getTable($file);
+            $model = $this->getModel()->findByPk($id);
+            $model['table_uk'] = $table;
+            $model->save();
         }
     }
 

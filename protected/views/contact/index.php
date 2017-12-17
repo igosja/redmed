@@ -46,18 +46,22 @@
                     'class' => 'contacts-input',
                     'placeholder' => Yii::t('views.contact.index', 'placeholder-name')
                 )); ?>
+                <?= $form->error($model, 'name'); ?>
                 <?= $form->textField($model, 'phone', array(
                     'class' => 'contacts-input phone_mask',
                     'placeholder' => Yii::t('views.contact.index', 'placeholder-phone')
                 )); ?>
+                <?= $form->error($model, 'phone'); ?>
                 <?= $form->textField($model, 'email', array(
                     'class' => 'contacts-input',
                     'placeholder' => Yii::t('views.contact.index', 'placeholder-email')
                 )); ?>
+                <?= $form->error($model, 'email'); ?>
                 <?= $form->textArea($model, 'text', array(
                     'class' => 'contacts-textarea',
                     'placeholder' => Yii::t('views.contact.index', 'placeholder-text')
                 )); ?>
+                <?= $form->error($model, 'text'); ?>
             </div>
             <?= CHtml::submitButton(
                 Yii::t('views.contact.index', 'button-submit'),

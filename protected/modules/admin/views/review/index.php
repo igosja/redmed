@@ -27,6 +27,19 @@
         array(
             'filter' => false,
             'headerHtmlOptions' => array('class' => 'col-lg-1, col-md-1, col-sm-1, col-xs-1'),
+            'name' => 'new',
+            'value' => function ($model) {
+                if (!$model['new']) {
+                    $result = '';
+                } else {
+                    $result = 'NEW';
+                }
+                return $result;
+            }
+        ),
+        array(
+            'filter' => false,
+            'headerHtmlOptions' => array('class' => 'col-lg-1, col-md-1, col-sm-1, col-xs-1'),
             'name' => 'status',
             'type' => 'raw',
             'value' => function ($model) {

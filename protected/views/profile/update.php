@@ -24,7 +24,7 @@
                 </div>
                 <div class="lk-profile__three">
                     <?= $form->labelEx($o_user, 'phone'); ?>
-                    <?= $form->textField($o_user, 'phone', array('class' => 'e-form__input')); ?>
+                    <?= $form->textField($o_user, 'phone', array('class' => 'e-form__input phone_mask')); ?>
                     <?= $form->error($o_user, 'phone'); ?>
                 </div>
                 <div class="lk-profile__three">

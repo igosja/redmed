@@ -4,6 +4,7 @@ class IndexController extends Controller
 {
     public function actionIndex()
     {
+        $a_brand = Brand::model()->findAllByAttributes(array('status' => 1), array('order' => '`order` ASC'));
         $a_slide = Slide::model()->findAllByAttributes(array('status' => 1), array('order' => '`order` ASC'));
         $o_page = PageMain::model()->findByPk(1);
         $this->setSEO($o_page);
@@ -11,6 +12,7 @@ class IndexController extends Controller
             $o_page['h1_' . Yii::app()->language],
         );
         $this->render('index', array(
+            'a_brand' => $a_brand,
             'a_slide' => $a_slide,
             'o_page' => $o_page,
         ));

@@ -23,31 +23,17 @@ class SiteController extends Controller
 
     public function actionSignup()
     {
-        $a_usertype = UserType::model()->findAllByAttributes(array('status' => 1), array('order' => '`order` ASC'));
         $model = new User;
         $model->setScenario('signup');
         if ($data = Yii::app()->request->getPost('User')) {
             $model->attributes = $data;
             if ($model->save()) {
-                $this->uploadImage($model->primaryKey);
                 $model->send();
+                Yii::app()->user->setFlash('success-signup', true);
                 $this->refresh();
             }
         }
-        $this->render('signup', array('model' => $model, 'a_usertype' => $a_usertype));
-    }
-
-    public function actionForget()
-    {
-        $model = new Forget();
-        if ($data = Yii::app()->request->getPost('Forget')) {
-            $model->attributes = $data;
-            if ($model->validate() && $model->check()) {
-                $model->send();
-                $this->redirect(array('profile/index'));
-            }
-        }
-        $this->render('forget', array('model' => $model));
+        $this->render('signup', array('model' => $model));
     }
 
     public function actionLogout()

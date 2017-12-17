@@ -8,6 +8,7 @@ class Controller extends CController
     public $a_language = array();
     public $a_social = array();
     public $breadcrumbs = array();
+    public $forget;
     public $layout = 'main';
     public $o_contact;
     public $og_image;
@@ -55,6 +56,7 @@ class Controller extends CController
         $this->a_social = Social::model()->findAllByAttributes(
             array('status' => 1), array('order' => '`order` ASC')
         );
+        $this->forget = new Forget();
         $this->o_contact = new Contact();
         $this->searchInfo = new SearchInfo();
         $clientScript = Yii::app()->getClientScript();
@@ -72,6 +74,15 @@ class Controller extends CController
                 $redirect['id'] = Yii::app()->request->getQuery('id');
             }
             $this->redirect($redirect);
+        }
+        $model = new Forget();
+        if ($data = Yii::app()->request->getPost('Forget')) {
+            $model->attributes = $data;
+            if ($model->validate() && $model->check()) {
+                $model->send();
+                Yii::app()->user->setFlash('success-forget', true);
+                $this->refresh();
+            }
         }
         return $action;
     }

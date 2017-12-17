@@ -9,6 +9,7 @@ class ContactController extends Controller
             $model->attributes = $data;
             if ($model->save()) {
                 $model->send();
+                Yii::app()->user->setFlash('success-feedback', true);
                 $this->refresh();
             }
         }

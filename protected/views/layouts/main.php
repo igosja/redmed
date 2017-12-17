@@ -1,5 +1,6 @@
 <?php
 /**
+ * @var $form      CActiveForm
  * @var $content string
  */
 ?>
@@ -244,16 +245,126 @@
     <div class="wrap">
         <!-- Забыли пароль? -->
         <div class="of-form e-form form-password">
-            <form action="">
+            <?php $form = $this->beginWidget('CActiveForm', array(
+                'enableAjaxValidation' => false,
+                'enableClientValidation' => true
+            )); ?>
                 <div class="e-form__t">
                     <div class="e-form__title"><?= Yii::t('views.overlay.password', 'title'); ?></div>
                     <p><?= Yii::t('views.overlay.password', 'text'); ?></p>
-                    <input type="email" class="e-form__input" placeholder="Email">
-                    <input type="submit" class="e-form__submit" value="Напомнить" >
+                    <?= $form->textField($this->forget, 'email', array(
+                        'class' => 'e-form__input',
+                        'placeholder' => Yii::t('views.overlay.password', 'placeholder-email')
+                    )); ?>
+                    <?= $form->error($this->forget, 'email'); ?>
+                    <?= CHtml::submitButton(
+                        Yii::t('views.overlay.password', 'button-submit'),
+                        array('class' => 'e-form__submit')
+                    )?>
                 </div>
                 <a href="javascript:" class="of-close"></a>
-            </form>
+            <?php $this->endWidget(); ?>
         </div>
+
+        <?php if (Yii::app()->user->hasFlash('success-forget')) {
+            Yii::app()->user->getFlash('success-forget'); ?>
+            <a
+                    href="javascript:"
+                    id="link-success-forget"
+                    style="display: none;"
+                    data-selector="form-thanks-forget"
+                    class="overlayElementTrigger"
+            ></a>
+            <div class="of-form e-form form-thanks-forget form-thanks">
+                <div class="e-form__t">
+                    <div class="e-form__title">
+                        <?= Yii::t('views.overlay.forget', 'thanks-title'); ?>
+                    </div>
+                    <p><?= Yii::t('views.overlay.forget', 'thanks-text'); ?></p>
+                </div>
+                <a href="javascript:" class="of-close"></a>
+            </div>
+        <?php } ?>
+
+        <?php if (Yii::app()->user->hasFlash('success-review')) {
+            Yii::app()->user->getFlash('success-review'); ?>
+            <a
+                    href="javascript:"
+                    id="link-success-review"
+                    style="display: none;"
+                    data-selector="form-thanks-review"
+                    class="overlayElementTrigger"
+            ></a>
+            <div class="of-form e-form form-thanks-review form-thanks">
+                <div class="e-form__t">
+                    <div class="e-form__title">
+                        <?= Yii::t('views.overlay.review', 'thanks-title'); ?>
+                    </div>
+                    <p><?= Yii::t('views.overlay.review', 'thanks-text'); ?></p>
+                </div>
+                <a href="javascript:" class="of-close"></a>
+            </div>
+        <?php } ?>
+
+        <?php if (Yii::app()->user->hasFlash('success-order')) {
+            Yii::app()->user->getFlash('success-order'); ?>
+            <a
+                    href="javascript:"
+                    id="link-success-order"
+                    style="display: none;"
+                    data-selector="form-thanks-order"
+                    class="overlayElementTrigger"
+            ></a>
+            <div class="of-form e-form form-thanks-order form-thanks">
+                <div class="e-form__t">
+                    <div class="e-form__title">
+                        <?= Yii::t('views.overlay.order', 'thanks-title'); ?>
+                    </div>
+                    <p><?= Yii::t('views.overlay.order', 'thanks-text'); ?></p>
+                </div>
+                <a href="javascript:" class="of-close"></a>
+            </div>
+        <?php } ?>
+
+        <?php if (Yii::app()->user->hasFlash('success-signup')) {
+            Yii::app()->user->getFlash('success-signup'); ?>
+            <a
+                    href="javascript:"
+                    id="link-success-signup"
+                    style="display: none;"
+                    data-selector="form-thanks-signup"
+                    class="overlayElementTrigger"
+            ></a>
+            <div class="of-form e-form form-thanks-signup form-thanks">
+                <div class="e-form__t">
+                    <div class="e-form__title">
+                        <?= Yii::t('views.overlay.signup', 'thanks-title'); ?>
+                    </div>
+                    <p><?= Yii::t('views.overlay.signup', 'thanks-text'); ?></p>
+                </div>
+                <a href="javascript:" class="of-close"></a>
+            </div>
+        <?php } ?>
+
+        <?php if (Yii::app()->user->hasFlash('success-feedback')) {
+            Yii::app()->user->getFlash('success-feedback'); ?>
+            <a
+                    href="javascript:"
+                    id="link-success-feedback"
+                    style="display: none;"
+                    data-selector="form-thanks-feedback"
+                    class="overlayElementTrigger"
+            ></a>
+            <div class="of-form e-form form-thanks-feedback form-thanks">
+                <div class="e-form__t">
+                    <div class="e-form__title">
+                        <?= Yii::t('views.overlay.feedback', 'thanks-title'); ?>
+                    </div>
+                    <p><?= Yii::t('views.overlay.feedback', 'thanks-text'); ?></p>
+                </div>
+                <a href="javascript:" class="of-close"></a>
+            </div>
+        <?php } ?>
     </div>
 </section>
 <script src="/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js?v=<?= filemtime(__DIR__ . '/../../../js/vendor/modernizr-2.6.2-respond-1.1.0.min.js'); ?>"></script>

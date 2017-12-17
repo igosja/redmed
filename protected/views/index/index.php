@@ -1,5 +1,6 @@
 <?php
 /**
+ * @var $a_brand array
  * @var $a_slide array
  * @var $o_page PageMain
  */
@@ -55,36 +56,17 @@
                 <?= Yii::t('views.index.index', 'brands'); ?>
             </div>
             <div class="brands owl-carousel">
-                <div class="item">
-                    <img src="img/brands/brands-1.png" alt="">
-                </div>
-                <div class="item">
-                    <img src="img/brands/brands-2.png" alt="">
-                </div>
-                <div class="item">
-                    <img src="img/brands/brands-3.png" alt="">
-                </div>
-                <div class="item">
-                    <img src="img/brands/brands-4.png" alt="">
-                </div>
-                <div class="item">
-                    <img src="img/brands/brands-5.png" alt="">
-                </div>
-                <div class="item">
-                    <img src="img/brands/brands-1.png" alt="">
-                </div>
-                <div class="item">
-                    <img src="img/brands/brands-2.png" alt="">
-                </div>
-                <div class="item">
-                    <img src="img/brands/brands-3.png" alt="">
-                </div>
-                <div class="item">
-                    <img src="img/brands/brands-4.png" alt="">
-                </div>
-                <div class="item">
-                    <img src="img/brands/brands-5.png" alt="">
-                </div>
+                <?php foreach ($a_brand as $item) { ?>
+                    <div class="item">
+                        <?= CHtml::link(
+                            '<img
+                                    src="' . ImageIgosja::resize($item['image_id'], 120, 120, 0) . '"
+                                    alt="' . $item['h1_' . Yii::app()->language]. '"
+                            />',
+                            array('catalog/index', 'brand[]' => $item['id'])
+                        )?>
+                    </div>
+                <?php } ?>
             </div>
         </div>
     </div>

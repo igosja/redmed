@@ -8,6 +8,7 @@ class m171214_181318_review extends CDbMigration
             'id' => 'pk',
             'date' => 'int(11) default 0',
             'name' => 'varchar(255)',
+            'new' => 'int(1) default 1',
             'status' => 'int(1) default 0',
             'text' => 'text',
         ));

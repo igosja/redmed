@@ -78,10 +78,12 @@
                             'class' => 'e-form__input',
                             'placeholder' => Yii::t('views.review.index', 'placeholder-name')
                         )); ?>
+                        <?= $form->error($model, 'name'); ?>
                         <?= $form->textArea($model, 'text', array(
                             'class' => 'e-form__textarea',
                             'placeholder' => Yii::t('views.review.index', 'placeholder-text')
                         )); ?>
+                        <?= $form->error($model, 'text'); ?>
                         <div class="clearfix">
                             <span class="e-form__star">
                                 <?= Yii::t('views.review.index', 'title-required'); ?>

@@ -8,6 +8,7 @@ class ReviewController extends Controller
         if ($data = Yii::app()->request->getPost('Review')) {
             $model->attributes = $data;
             if ($model->save()) {
+                Yii::app()->user->setFlash('success-review', true);
                 $this->refresh();
             }
         }
