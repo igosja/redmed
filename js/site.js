@@ -98,4 +98,8 @@ jQuery(document).ready(function ($) {
     if ($('#link-success-feedback').length) {
         $('#link-success-feedback').trigger('click');
     }
+
+    if ($('#link-error-forget').length) {
+        $('#link-error-forget').trigger('click');
+    }
 });

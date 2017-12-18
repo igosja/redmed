@@ -113,18 +113,14 @@ class Product extends CActiveRecord
         $criteria = new CDbCriteria();
         $criteria->addSearchCondition('h1_ru', $text, true, 'OR');
         $criteria->addSearchCondition('h1_uk', $text, true, 'OR');
-        $criteria->addSearchCondition('parameter_ru', $text, true, 'OR');
-        $criteria->addSearchCondition('parameter_uk', $text, true, 'OR');
+        $criteria->addSearchCondition('table_ru', $text, true, 'OR');
+        $criteria->addSearchCondition('table_uk', $text, true, 'OR');
+        $criteria->addSearchCondition('technical_ru', $text, true, 'OR');
+        $criteria->addSearchCondition('technical_uk', $text, true, 'OR');
         $criteria->addSearchCondition('text_ru', $text, true, 'OR');
         $criteria->addSearchCondition('text_uk', $text, true, 'OR');
-        $criteria->addSearchCondition('attention_ru', $text, true, 'OR');
-        $criteria->addSearchCondition('attention_uk', $text, true, 'OR');
-        $criteria->addSearchCondition('composition_ru', $text, true, 'OR');
-        $criteria->addSearchCondition('composition_uk', $text, true, 'OR');
-        $criteria->addSearchCondition('release_form_ru', $text, true, 'OR');
-        $criteria->addSearchCondition('release_form_uk', $text, true, 'OR');
-        $criteria->addSearchCondition('shelf_life_ru', $text, true, 'OR');
-        $criteria->addSearchCondition('shelf_life_uk', $text, true, 'OR');
+        $criteria->addSearchCondition('use_ru', $text, true, 'OR');
+        $criteria->addSearchCondition('use_uk', $text, true, 'OR');
 
         return self::model()->findAll($criteria);
     }

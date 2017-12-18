@@ -82,6 +82,8 @@ class Controller extends CController
                 $model->send();
                 Yii::app()->user->setFlash('success-forget', true);
                 $this->refresh();
+            } else {
+                Yii::app()->user->setFlash('error-forget', true);
             }
         }
         return $action;

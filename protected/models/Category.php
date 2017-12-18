@@ -81,6 +81,17 @@ class Category extends CActiveRecord
         ));
     }
 
+    public static function searchInfo($text)
+    {
+        $criteria = new CDbCriteria();
+        $criteria->addSearchCondition('h1_ru', $text, true, 'OR');
+        $criteria->addSearchCondition('h1_uk', $text, true, 'OR');
+        $criteria->addSearchCondition('text_ru', $text, true, 'OR');
+        $criteria->addSearchCondition('text_uk', $text, true, 'OR');
+
+        return self::model()->findAll($criteria);
+    }
+
     public static function model($className = __CLASS__)
     {
         return parent::model($className);

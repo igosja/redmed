@@ -128,7 +128,7 @@
                         <li class="nav-h">
                             <?= CHtml::link(
                                 Yii::t('views.layouts.main', 'header-link-catalog'),
-                                array('category/index'),
+                                array('catalog/index'),
                                 array('class' => 'nav__arrow')
                             ); ?>
                             <div class="nav__drop">
@@ -181,10 +181,17 @@
         </div>
         <div class="search">
             <div class="wrap clearfix">
-                <form action="">
-                    <input type="submit" class="search__subm" value="">
-                    <input type="text" class="search__text" placeholder="Поиск">
-                </form>
+                <?php $form = $this->beginWidget('CActiveForm', array(
+                    'action' => array('search/index'),
+                    'enableAjaxValidation' => false,
+                    'enableClientValidation' => true,
+                    'method' => 'get'
+                )); ?>
+                <?= CHtml::submitButton('', array('class' => 'search__subm')); ?>
+                <?= $form->textField($this->searchInfo, 'q', array(
+                    'class' => 'search__text',
+                )); ?>
+                <?php $this->endWidget(); ?>
             </div>
         </div>
     </header>
@@ -364,6 +371,17 @@
                 </div>
                 <a href="javascript:" class="of-close"></a>
             </div>
+        <?php } ?>
+
+        <?php if (Yii::app()->user->hasFlash('error-forget')) {
+            Yii::app()->user->getFlash('error-forget'); ?>
+            <a
+                    href="javascript:"
+                    id="link-error-forget"
+                    style="display: none;"
+                    data-selector="form-password"
+                    class="overlayElementTrigger"
+            ></a>
         <?php } ?>
     </div>
 </section>
