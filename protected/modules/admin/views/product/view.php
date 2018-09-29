@@ -51,7 +51,11 @@ $attributes = array(
         'name' => 'brand_id',
         'value' => $model['brand']['h1_ru'],
     ),
-    'price',
+    'order',
+    'price_usd',
+    'price_eur',
+    'price_pln',
+    'price_cny',
     'discount',
     'video',
     array(

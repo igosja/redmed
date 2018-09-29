@@ -50,7 +50,7 @@ class Controller extends CController
         if ($language = Yii::app()->request->getQuery('language')) {
             Yii::app()->language = $language;
         } else {
-            $language = Language::model()->find(array('select' => array('code'), 'order' => '`order` ASC'));
+            $language = Language::model()->findByAttributes(array('status' => 1), array('select' => array('code'), 'order' => '`order` ASC'));
             Yii::app()->language = $language['code'];
         }
         $this->a_category = Category::model()->findAllByAttributes(
@@ -187,7 +187,20 @@ class Controller extends CController
         if ($main['rate_date'] < time()-86400) {
             $json = json_decode(file_get_contents('https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json&valcode=USD'), true);
             $rate = $json[0]['rate'];
-            $main->rate = $rate;
+            $main->rate_usd = $rate;
+
+            $json = json_decode(file_get_contents('https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json&valcode=EUR'), true);
+            $rate = $json[0]['rate'];
+            $main->rate_eur = $rate;
+
+            $json = json_decode(file_get_contents('https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json&valcode=PLN'), true);
+            $rate = $json[0]['rate'];
+            $main->rate_pln = $rate;
+
+            $json = json_decode(file_get_contents('https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json&valcode=CNY'), true);
+            $rate = $json[0]['rate'];
+            $main->rate_cny = $rate;
+
             $main->rate_date = strtotime(date('Y-m-d 00:00:00'));
             $main->save();
         }

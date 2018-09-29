@@ -21,7 +21,7 @@ class CatalogController extends Controller
 
         $a_product = Product::model()->findAllByAttributes(
             $product_attributes,
-            array('order' => 'id ASC')
+            array('order' => '`order` ASC, id ASC')
         );
         $product_id = array(0);
         $brand_id = array(0);
@@ -57,7 +57,7 @@ class CatalogController extends Controller
 
         $a_product = Product::model()->findAllByAttributes(
             $product_attributes,
-            array('order' => 'id ASC', 'offset' => $offset, 'limit' => Product::ON_PAGE)
+            array('order' => '`order` ASC, id ASC', 'offset' => $offset, 'limit' => Product::ON_PAGE)
         );
         $count = Product::model()->countByAttributes($product_attributes);
         $page_total = ceil($count / Product::ON_PAGE);

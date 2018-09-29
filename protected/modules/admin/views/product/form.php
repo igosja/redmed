@@ -79,10 +79,38 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="col-lg-3"><?= $form->labelEx($model, 'price'); ?></td>
+                        <td class="col-lg-3"><?= $form->labelEx($model, 'order'); ?></td>
                         <td>
-                            <?= $form->textField($model, 'price', array('class' => 'form-control')); ?>
-                            <?= $form->error($model, 'price'); ?>
+                            <?= $form->textField($model, 'order', array('class' => 'form-control')); ?>
+                            <?= $form->error($model, 'order'); ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-lg-3"><?= $form->labelEx($model, 'price_usd'); ?></td>
+                        <td>
+                            <?= $form->textField($model, 'price_usd', array('class' => 'form-control')); ?>
+                            <?= $form->error($model, 'price_usd'); ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-lg-3"><?= $form->labelEx($model, 'price_eur'); ?></td>
+                        <td>
+                            <?= $form->textField($model, 'price_eur', array('class' => 'form-control')); ?>
+                            <?= $form->error($model, 'price_eur'); ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-lg-3"><?= $form->labelEx($model, 'price_pln'); ?></td>
+                        <td>
+                            <?= $form->textField($model, 'price_pln', array('class' => 'form-control')); ?>
+                            <?= $form->error($model, 'price_pln'); ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-lg-3"><?= $form->labelEx($model, 'price_cny'); ?></td>
+                        <td>
+                            <?= $form->textField($model, 'price_cny', array('class' => 'form-control')); ?>
+                            <?= $form->error($model, 'price_cny'); ?>
                         </td>
                     </tr>
                     <tr>

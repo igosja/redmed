@@ -22,6 +22,11 @@
     <?php
     $columns = array(
         array(
+            'header' => '<span title="Порядок сортировки">ПС</span>',
+            'headerHtmlOptions' => array('class' => 'col-lg-1, col-md-1, col-sm-1, col-xs-1'),
+            'name' => 'order',
+        ),
+        array(
             'headerHtmlOptions' => array('class' => 'col-lg-1, col-md-1, col-sm-1, col-xs-1'),
             'name' => 'id',
         ),
@@ -69,6 +74,7 @@
     );
     $this->widget('zii.widgets.grid.CGridView', array(
         'afterAjaxUpdate' => 'function(id, data){CGridViewAfterAjax()}',
+        'ajaxUpdate' => false,
         'columns' => $columns,
         'dataProvider' => $model->search(),
         'filter' => $model,

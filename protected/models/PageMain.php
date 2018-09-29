@@ -12,7 +12,7 @@ class PageMain extends CActiveRecord
         return array(
             array('h1_ru, h1_uk, seo_title_ru, seo_title_uk', 'length', 'max' => 255),
             array('text_1_ru, text_1_uk, text_2_ru, text_2_uk, text_3_ru, text_3_uk, seo_description_ru, seo_description_uk, seo_keywords_ru, seo_keywords_uk', 'safe'),
-            array('rate, rate_date', 'safe'),
+            array('rate_usd, rate_eur, rate_pln, rate_cny, rate_date', 'safe'),
         );
     }
 

@@ -17,9 +17,12 @@ class Product extends CActiveRecord
     {
         return array(
             array('h1_ru, h1_uk, url, video, sku', 'length', 'max' => 255),
-            array('brand_id, category_id, discount, status, price', 'numerical'),
-            array('category_id, h1_ru, h1_uk, price', 'required'),
-            array('analog_field, filter_field, pdf_field, table_ru, table_uk, technical_ru, technical_uk, text_ru, text_uk, use_ru, use_uk, seo_description_ru, seo_description_uk, seo_keywords_ru, seo_keywords_uk', 'safe'),
+            array('brand_id, category_id, discount, status, price_usd, price_eur, price_pln, price_cny, order', 'numerical'),
+            array('category_id, h1_ru, h1_uk', 'required'),
+            array(
+                'analog_field, filter_field, pdf_field, table_ru, table_uk, technical_ru, technical_uk, text_ru, text_uk, use_ru, use_uk, seo_description_ru, seo_description_uk, seo_keywords_ru, seo_keywords_uk',
+                'safe'
+            ),
         );
     }
 
@@ -35,7 +38,10 @@ class Product extends CActiveRecord
             'h1_ru' => 'Название (Русский)',
             'h1_uk' => 'Название (Українська)',
             'pdf_field' => 'Инструкции',
-            'price' => 'Цена, $',
+            'price_usd' => 'Цена, USD',
+            'price_eur' => 'Цена, EUR',
+            'price_pln' => 'Цена, PLN',
+            'price_cny' => 'Цена, CNY',
             'sku' => 'Артикул',
             'table_ru' => 'Таблица (Русский)',
             'table_ru_excel' => 'Таблица xls (Русский)',
@@ -56,6 +62,7 @@ class Product extends CActiveRecord
             'status' => 'Статус',
             'url' => 'ЧП-URL',
             'video' => 'Код видео с Youtube (https://www.youtube.com/watch?v=<strong>code</strong>)',
+            'order' => 'Порядок сортировки',
         );
     }
 
@@ -63,6 +70,10 @@ class Product extends CActiveRecord
     {
         if (parent::beforeSave()) {
             $this['url'] = str_replace('/', '', $this['url']);
+            if (!$this['order']) {
+                $max = self::model()->find(array('order' => '`order` DESC', 'limit' => 1));
+                $this['order'] = $max['order'] + 1;
+            }
         }
         return true;
     }
@@ -105,9 +116,13 @@ class Product extends CActiveRecord
         $criteria->compare('id', $this['id']);
         $criteria->compare('h1_ru', $this['h1_ru'], true);
         $criteria->compare('sku', $this['sku']);
+        $criteria->compare('`order`', $this['order']);
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
+            'sort'=>array(
+                'defaultOrder'=>'`order` ASC',
+            ),
         ));
     }
 
@@ -130,8 +145,18 @@ class Product extends CActiveRecord
 
     public function getPrice()
     {
-        $rate = $main = PageMain::model()->findByPk(1);
-        return round($this['price'] * $rate['rate'], 2);
+        $rate = PageMain::model()->findByPk(1);
+        if ($this['price_usd'] > 0) {
+            return round($this['price_usd'] * $rate['rate_usd'], 2);
+        } elseif ($this['price_eur'] > 0) {
+            return round($this['price_eur'] * $rate['rate_eur'], 2);
+        } elseif ($this['price_pln'] > 0) {
+            return round($this['price_pln'] * $rate['rate_pln'], 2);
+        } elseif ($this['price_cny'] > 0) {
+            return round($this['price_cny'] * $rate['rate_cny'], 2);
+        } else {
+            return 0;
+        }
     }
 
     public static function model($className = __CLASS__)
