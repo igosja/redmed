@@ -62,16 +62,16 @@
 }
 
 .to-top {
-  -webkit-animation-duration: 1.5s;
-  animation-duration: 1.5s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-  -webkit-animation-timing-function: linear;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-name: bounce;
-  animation-name: bounce;
+    -webkit-animation-duration: 1.5s;
+    animation-duration: 1.5s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-name: bounce;
+    animation-name: bounce;
 }
 
 .prod-bottom__table td:first-of-type {
@@ -79,8 +79,8 @@
 }
 
 .tweet {
-  width:30px;
-  background: url(../img/facebook-btn.png) 0 0 no-repeat;
+    width:30px;
+    background: url(../img/facebook-btn.png) 0 0 no-repeat;
 }
 
 .m-cat__i {
