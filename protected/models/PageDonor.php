@@ -11,6 +11,7 @@ class PageDonor extends CActiveRecord
     {
         return array(
             array('h1_ru, h1_uk, h2_ru, h2_uk, title_1_ru, title_1_uk, title_2_ru, title_2_uk, title_3_ru, title_3_uk, seo_title_ru, seo_title_uk', 'length', 'max' => 255),
+            array('url_1_ru, url_1_uk, url_2_ru, url_2_uk, url_3_ru, url_3_uk, ', 'url'),
             array('image_id', 'numerical'),
             array('text_ru, text_uk, text_1_ru, text_1_uk, text_2_ru, text_2_uk, text_3_ru, text_3_uk, seo_description_ru, seo_description_uk, seo_keywords_ru, seo_keywords_uk', 'safe'),
         );
@@ -38,6 +39,12 @@ class PageDonor extends CActiveRecord
             'title_2_uk' => 'Заголовок 2 (Українська)',
             'title_3_ru' => 'Заголовок 3 (Русский)',
             'title_3_uk' => 'Заголовок 3 (Українська)',
+            'url_1_ru' => 'Ссылка 1 (Русский)',
+            'url_1_uk' => 'Ссылка 1 (Українська)',
+            'url_2_ru' => 'Ссылка 2 (Русский)',
+            'url_2_uk' => 'Ссылка 2 (Українська)',
+            'url_3_ru' => 'Ссылка 3 (Русский)',
+            'url_3_uk' => 'Ссылка 3 (Українська)',
             'seo_title_ru' => 'SEO title (Русский)',
             'seo_title_uk' => 'SEO title (Українська)',
             'seo_description_ru' => 'SEO description (Русский)',

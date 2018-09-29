@@ -78,38 +78,159 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="col-lg-3"><?= $form->labelEx($model, 'phone_city'); ?></td>
+                        <td class="col-lg-3">
+                            <?= $form->labelEx($model, 'address_book_ru'); ?>
+                        </td>
                         <td>
-                            <?= $form->textField($model, 'phone_city', array('class' => 'form-control')); ?>
-                            <?= $form->error($model, 'phone_city'); ?>
+                            <?= $form->textArea($model, 'address_book_ru', array('class' => 'form-control')); ?>
+                            <?= $form->error($model, 'address_book_ru'); ?>
                         </td>
                     </tr>
                     <tr>
-                        <td class="col-lg-3"><?= $form->labelEx($model, 'phone_kyiv'); ?></td>
+                        <td class="col-lg-3">
+                            <?= $form->labelEx($model, 'address_book_uk'); ?>
+                        </td>
                         <td>
-                            <?= $form->textField($model, 'phone_kyiv', array('class' => 'form-control')); ?>
-                            <?= $form->error($model, 'phone_kyiv'); ?>
+                            <?= $form->textArea($model, 'address_book_uk', array('class' => 'form-control')); ?>
+                            <?= $form->error($model, 'address_book_uk'); ?>
                         </td>
                     </tr>
                     <tr>
-                        <td class="col-lg-3"><?= $form->labelEx($model, 'phone_life'); ?></td>
+                        <td class="col-lg-3">
+                            <?= $form->labelEx($model, 'address_direct_ru'); ?>
+                        </td>
                         <td>
-                            <?= $form->textField($model, 'phone_life', array('class' => 'form-control')); ?>
-                            <?= $form->error($model, 'phone_life'); ?>
+                            <?= $form->textArea($model, 'address_direct_ru', array('class' => 'form-control')); ?>
+                            <?= $form->error($model, 'address_direct_ru'); ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-lg-3">
+                            <?= $form->labelEx($model, 'address_direct_uk'); ?>
+                        </td>
+                        <td>
+                            <?= $form->textArea($model, 'address_direct_uk', array('class' => 'form-control')); ?>
+                            <?= $form->error($model, 'address_direct_uk'); ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-lg-3">
+                            <?= $form->labelEx($model, 'address_tender_ru'); ?>
+                        </td>
+                        <td>
+                            <?= $form->textArea($model, 'address_tender_ru', array('class' => 'form-control')); ?>
+                            <?= $form->error($model, 'address_tender_ru'); ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-lg-3">
+                            <?= $form->labelEx($model, 'address_tender_uk'); ?>
+                        </td>
+                        <td>
+                            <?= $form->textArea($model, 'address_tender_uk', array('class' => 'form-control')); ?>
+                            <?= $form->error($model, 'address_tender_uk'); ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-lg-3">
+                            <?= $form->labelEx($model, 'address_warehouse_ru'); ?>
+                        </td>
+                        <td>
+                            <?= $form->textArea($model, 'address_warehouse_ru', array('class' => 'form-control')); ?>
+                            <?= $form->error($model, 'address_warehouse_ru'); ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-lg-3">
+                            <?= $form->labelEx($model, 'address_warehouse_uk'); ?>
+                        </td>
+                        <td>
+                            <?= $form->textArea($model, 'address_warehouse_uk', array('class' => 'form-control')); ?>
+                            <?= $form->error($model, 'address_warehouse_uk'); ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-lg-3"><?= $form->labelEx($model, 'phone'); ?></td>
+                        <td>
+                            <?= $form->textArea($model, 'phone', array('class' => 'form-control')); ?>
+                            <?= $form->error($model, 'phone'); ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-lg-3"><?= $form->labelEx($model, 'phone_book'); ?></td>
+                        <td>
+                            <?= $form->textArea($model, 'phone_book', array('class' => 'form-control')); ?>
+                            <?= $form->error($model, 'phone_book'); ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-lg-3"><?= $form->labelEx($model, 'phone_direct'); ?></td>
+                        <td>
+                            <?= $form->textArea($model, 'phone_direct', array('class' => 'form-control')); ?>
+                            <?= $form->error($model, 'phone_direct'); ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-lg-3"><?= $form->labelEx($model, 'phone_tender'); ?></td>
+                        <td>
+                            <?= $form->textArea($model, 'phone_tender', array('class' => 'form-control')); ?>
+                            <?= $form->error($model, 'phone_tender'); ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-lg-3"><?= $form->labelEx($model, 'phone_warehouse'); ?></td>
+                        <td>
+                            <?= $form->textArea($model, 'phone_warehouse', array('class' => 'form-control')); ?>
+                            <?= $form->error($model, 'phone_warehouse'); ?>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-lg-3"><?= $form->labelEx($model, 'email'); ?></td>
                         <td>
-                            <?= $form->textField($model, 'email', array('class' => 'form-control')); ?>
+                            <?= $form->textArea($model, 'email', array('class' => 'form-control')); ?>
                             <?= $form->error($model, 'email'); ?>
                         </td>
                     </tr>
                     <tr>
-                        <td class="col-lg-3"><?= $form->labelEx($model, 'email_letter'); ?></td>
+                        <td class="col-lg-3"><?= $form->labelEx($model, 'email_book'); ?></td>
                         <td>
-                            <?= $form->textField($model, 'email_letter', array('class' => 'form-control')); ?>
-                            <?= $form->error($model, 'email_letter'); ?>
+                            <?= $form->textArea($model, 'email_book', array('class' => 'form-control')); ?>
+                            <?= $form->error($model, 'email_book'); ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-lg-3"><?= $form->labelEx($model, 'email_direct'); ?></td>
+                        <td>
+                            <?= $form->textArea($model, 'email_direct', array('class' => 'form-control')); ?>
+                            <?= $form->error($model, 'email_direct'); ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-lg-3"><?= $form->labelEx($model, 'email_tender'); ?></td>
+                        <td>
+                            <?= $form->textArea($model, 'email_tender', array('class' => 'form-control')); ?>
+                            <?= $form->error($model, 'email_tender'); ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-lg-3"><?= $form->labelEx($model, 'email_warehouse'); ?></td>
+                        <td>
+                            <?= $form->textArea($model, 'email_warehouse', array('class' => 'form-control')); ?>
+                            <?= $form->error($model, 'email_warehouse'); ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-lg-3"><?= $form->labelEx($model, 'skype'); ?></td>
+                        <td>
+                            <?= $form->textField($model, 'skype', array('class' => 'form-control')); ?>
+                            <?= $form->error($model, 'skype'); ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-lg-3"><?= $form->labelEx($model, 'url'); ?></td>
+                        <td>
+                            <?= $form->textArea($model, 'url', array('class' => 'form-control')); ?>
+                            <?= $form->error($model, 'url'); ?>
                         </td>
                     </tr>
                     <tr>
@@ -124,6 +245,20 @@
                         <td>
                             <?= $form->textField($model, 'lng', array('class' => 'form-control')); ?>
                             <?= $form->error($model, 'lng'); ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-lg-3"><?= $form->labelEx($model, 'lat_warehouse'); ?></td>
+                        <td>
+                            <?= $form->textField($model, 'lat_warehouse', array('class' => 'form-control')); ?>
+                            <?= $form->error($model, 'lat_warehouse'); ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-lg-3"><?= $form->labelEx($model, 'lng_warehouse'); ?></td>
+                        <td>
+                            <?= $form->textField($model, 'lng_warehouse', array('class' => 'form-control')); ?>
+                            <?= $form->error($model, 'lng_warehouse'); ?>
                         </td>
                     </tr>
                 </table>

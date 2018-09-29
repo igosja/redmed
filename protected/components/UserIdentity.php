@@ -23,4 +23,14 @@ class UserIdentity extends CUserIdentity
     {
         return $this->_id;
     }
+
+    public function setId($id)
+    {
+        $this->_id = $id;
+    }
+
+    public function setLogin($login)
+    {
+        $this->username = $login;
+    }
 }

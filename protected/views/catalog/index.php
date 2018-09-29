@@ -20,11 +20,12 @@
             )?>
         </div>
     </div>
+    <?= $this->renderPartial('/include/bread'); ?>
     <div class="clearfix in-page wrap">
         <div class="cat-l clearfix">
-            <form method="GET">
+            <form id="filter-form" method="GET">
                 <h3 class="cat-l__title"><?= Yii::t('views.catalog.index', 'category'); ?></h3>
-                <ul class="cat-menu">
+                <ul class="cat-menu cat-list">
                     <?php foreach ($this->a_category as $item) { ?>
                         <?php if ($item['url'] == Yii::app()->request->getQuery('id')) {
                             $class = 'strong';
@@ -40,8 +41,9 @@
                         </li>
                     <?php } ?>
                 </ul>
+                <?php if ($a_brand) { ?>
                 <h3 class="cat-l__title"><?= Yii::t('views.catalog.index', 'brand'); ?></h3>
-                <ul class="cat-radio">
+                <ul class="cat-radio cat-list">
                     <?php foreach ($a_brand as $item) { ?>
                         <li>
                             <div class="checkboxes">
@@ -61,9 +63,11 @@
                         </li>
                     <?php } ?>
                 </ul>
-                <h3 class="cat-l__title"><?= Yii::t('views.catalog.index', 'filter'); ?></h3>
-                <ul class="cat-radio">
-                    <?php foreach ($a_filter as $item) { ?>
+                <?php } ?>
+                <?php foreach ($a_filter as $group) { ?>
+                    <h3 class="cat-l__title"><?= $group['name_' . Yii::app()->language]; ?></h3>
+                    <ul class="cat-radio cat-list">
+                    <?php foreach ($group['filter'] as $item) { ?>
                         <li>
                             <div class="checkboxes">
                                 <input
@@ -81,10 +85,18 @@
                             </div>
                         </li>
                     <?php } ?>
-                </ul>
+                    </ul>
+                <?php } ?>
             </form>
         </div>
         <div class="cat-r">
+            <?php if ($o_category && $o_category['text_1_' . Yii::app()->language]) { ?>
+                <h1 class="title"><?= $o_category['text_1_' . Yii::app()->language]; ?></h1>
+            <?php } ?>
+            <?php if ($o_category && $o_category['text_2_' . Yii::app()->language]) { ?>
+                <?= $o_category['text_2_' . Yii::app()->language]; ?>
+                <br><br>
+            <?php } ?>
             <div class="clearfix">
                 <?php foreach ($a_product as $item) { ?>
                     <?= $this->renderPartial('item', array('item' => $item)); ?>
@@ -131,6 +143,11 @@
                     <?php } ?>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="b-text b-text_white">
+        <div class="wrap">
+            <?= $o_category ? $o_category['seotext_' . Yii::app()->language] : $o_page['seotext_' . Yii::app()->language]; ?>				
         </div>
     </div>
 </section>

@@ -24,10 +24,8 @@
             array('product/view', 'id' => $item['url']),
             array('class' => 'cat-i__more')
         ); ?>
-        <?= CHtml::link(
-            Yii::t('views.catalog.index', 'link-order'),
-            array('profile/product'),
-            array('class' => 'cat-i__cart')
-        ); ?>
+        <a href="javascript:" class="cat-i__cart add-to-cart-on-page" data-product="<?= $item['id']; ?>">
+            <?= Yii::t('views.catalog.index', 'link-order'); ?>
+        </a>
     </div>
 </div>

@@ -26,7 +26,22 @@ class ProductController extends AController
     {
         $this->h1 = $this->h1_edit;
         if (0 == $id) {
-            $model = $this->getModel();
+            if ($copy = Yii::app()->request->getQuery('copy')) {
+                $model = $this->getModel()->findByPk($copy);
+                if (null === $model) {
+                    throw new CHttpException(404, 'Страница не найдена.');
+                }
+                $model->isNewRecord = true;
+                $model->id = null;
+                foreach ($model['analog'] as $item) {
+                    $model->analog_field[] = $item['analog_id'];
+                }
+                foreach ($model['filter'] as $item) {
+                    $model->filter_field[] = $item['filter_id'];
+                }
+            } else {
+                $model = $this->getModel();
+            }
         } else {
             $model = $this->getModel()->findByPk($id);
             if (null === $model) {
@@ -50,6 +65,7 @@ class ProductController extends AController
                 $this->uploadPdf($model->primaryKey);
                 $this->uploadExcel($model->primaryKey);
                 $this->saveFilter($model->primaryKey);
+                $this->saveAnalog($model->primaryKey);
                 Yii::app()->user->setFlash('success', $this->saved);
                 $this->redirect(array('view', 'id' => $model->primaryKey));
             }
@@ -175,6 +191,20 @@ class ProductController extends AController
             foreach ($filter as $item) {
                 $model = new ProductFilter();
                 $model['filter_id'] = $item;
+                $model['product_id'] = $id;
+                $model->save();
+            }
+        }
+    }
+
+    public function saveAnalog($id)
+    {
+        ProductAnalog::model()->deleteAllByAttributes(array('product_id' => $id));
+        if (isset($_POST['Product']['analog_field']) && !empty($_POST['Product']['analog_field'])) {
+            $analog = $_POST['Product']['analog_field'];
+            foreach ($analog as $item) {
+                $model = new ProductAnalog();
+                $model['analog_id'] = $item;
                 $model['product_id'] = $id;
                 $model->save();
             }

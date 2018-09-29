@@ -11,8 +11,8 @@ class Filter extends CActiveRecord
     {
         return array(
             array('h1_ru, h1_uk', 'length', 'max' => 255),
-            array('order, status', 'numerical'),
-            array('h1_ru, h1_uk', 'required'),
+            array('order, status, filtergroup_id', 'numerical'),
+            array('h1_ru, h1_uk, filtergroup_id', 'required'),
         );
     }
 
@@ -21,6 +21,7 @@ class Filter extends CActiveRecord
         return array(
             'h1_ru' => 'Название (Русский)',
             'h1_uk' => 'Название (Українська)',
+            'filtergroup_id' => 'Группа фильтров',
             'status' => 'Статус',
         );
     }
@@ -50,6 +51,13 @@ class Filter extends CActiveRecord
             }
         }
         return true;
+    }
+
+    public function relations()
+    {
+        return array(
+            'filtergroup' => array(self::HAS_ONE, 'FilterGroup', array('id' => 'filtergroup_id')),
+        );
     }
 
     public function search()

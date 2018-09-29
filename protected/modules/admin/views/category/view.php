@@ -35,8 +35,19 @@ $attributes = array(
     'h1_ru',
     array(
         'name' => 'text_ru',
-        'format' => 'raw',
+        'type' => 'raw',
         'value' => nl2br($model['text_ru']),
+    ),
+    'text_1_ru',
+    array(
+        'name' => 'text_2_ru',
+        'type' => 'raw',
+        'value' => nl2br($model['text_2_ru']),
+    ),
+    array(
+        'name' => 'seotext_ru',
+        'type' => 'raw',
+        'value' => nl2br($model['seotext_ru']),
     ),
     'seo_title_ru',
     'seo_description_ru',
@@ -44,8 +55,19 @@ $attributes = array(
     'h1_uk',
     array(
         'name' => 'text_uk',
-        'format' => 'raw',
+        'type' => 'raw',
         'value' => nl2br($model['text_uk']),
+    ),
+    'text_1_uk',
+    array(
+        'name' => 'text_2_uk',
+        'type' => 'raw',
+        'value' => nl2br($model['text_2_uk']),
+    ),
+    array(
+        'name' => 'seotext_uk',
+        'type' => 'raw',
+        'value' => nl2br($model['seotext_uk']),
     ),
     'seo_title_uk',
     'seo_description_uk',

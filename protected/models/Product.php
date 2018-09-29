@@ -2,7 +2,7 @@
 
 class Product extends CActiveRecord
 {
-    const ON_PAGE = 6;
+    const ON_PAGE = 12;
 
     public $analog_field;
     public $filter_field;
@@ -16,7 +16,7 @@ class Product extends CActiveRecord
     public function rules()
     {
         return array(
-            array('h1_ru, h1_uk, url', 'length', 'max' => 255),
+            array('h1_ru, h1_uk, url, video, sku', 'length', 'max' => 255),
             array('brand_id, category_id, discount, status, price', 'numerical'),
             array('category_id, h1_ru, h1_uk, price', 'required'),
             array('analog_field, filter_field, pdf_field, table_ru, table_uk, technical_ru, technical_uk, text_ru, text_uk, use_ru, use_uk, seo_description_ru, seo_description_uk, seo_keywords_ru, seo_keywords_uk', 'safe'),
@@ -35,7 +35,8 @@ class Product extends CActiveRecord
             'h1_ru' => 'Название (Русский)',
             'h1_uk' => 'Название (Українська)',
             'pdf_field' => 'Инструкции',
-            'price' => 'Цена, грн',
+            'price' => 'Цена, $',
+            'sku' => 'Артикул',
             'table_ru' => 'Таблица (Русский)',
             'table_ru_excel' => 'Таблица xls (Русский)',
             'table_uk' => 'Таблица (Українська)',
@@ -54,6 +55,7 @@ class Product extends CActiveRecord
             'seo_keywords_uk' => 'SEO keywords (Українська)',
             'status' => 'Статус',
             'url' => 'ЧП-URL',
+            'video' => 'Код видео с Youtube (https://www.youtube.com/watch?v=<strong>code</strong>)',
         );
     }
 
@@ -102,6 +104,7 @@ class Product extends CActiveRecord
 
         $criteria->compare('id', $this['id']);
         $criteria->compare('h1_ru', $this['h1_ru'], true);
+        $criteria->compare('sku', $this['sku']);
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
@@ -123,6 +126,12 @@ class Product extends CActiveRecord
         $criteria->addSearchCondition('use_uk', $text, true, 'OR');
 
         return self::model()->findAll($criteria);
+    }
+
+    public function getPrice()
+    {
+        $rate = $main = PageMain::model()->findByPk(1);
+        return round($this['price'] * $rate['rate'], 2);
     }
 
     public static function model($className = __CLASS__)

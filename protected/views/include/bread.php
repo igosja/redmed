@@ -7,7 +7,7 @@
         array('itemprop' => 'itemListElement', 'itemscope' => 'itemscope', 'itemtype' => 'http://schema.org/ListItem')
     ),
     'htmlOptions' => array(
-        'class' => 'breadchambs',
+        'class' => 'bread wrap',
         'itemscope' => 'itemscope',
         'itemtype' => 'http://schema.org/BreadcrumbList'
     ),

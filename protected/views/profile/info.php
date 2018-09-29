@@ -4,6 +4,7 @@
             <?= Yii::t('views.profile.info', 'h1'); ?>
         </div>
     </div>
+    <?= $this->renderPartial('/include/bread'); ?>
     <div class="clearfix in-page wrap">
         <div class="lk-info-it">
             <h3 class="lk-info-it__title"><?= Yii::t('views.profile.info', 'h3-offer'); ?></h3>

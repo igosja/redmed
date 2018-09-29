@@ -1,3 +1,104 @@
 .strong {
     font-weight: bold;
 }
+
+.don-adr .wrap:before {
+    display: none;
+}
+
+.contacts-i {
+    margin-right: 24px;
+}
+
+.errorMessage {
+    color: red;
+}
+
+.don-three__i a {
+    text-decoration: none;
+}
+
+.don-three__i a .don-three__i__title {
+    color: #121212;
+}
+
+.b-text {
+    color: #888888;
+}
+
+.prod-pdf {
+    position: relative;
+}
+
+.prod-pdf span {
+    margin-left: -999em;
+    position: absolute;
+    font-weight: 300;
+    font-size: 13px;
+    text-transform: none;
+}
+
+.prod-pdf:hover span {
+    color: #121212;
+    border-radius: 5px 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
+    font-family: Calibri, Tahoma, Geneva, sans-serif;
+    position: absolute;
+    left: 10px;
+    top: 35px;
+    z-index: 99;
+    margin-left: 0;
+    width: 250px;
+}
+
+.classic-tooltip {
+    padding: 9px 15px;
+    background: #fff;
+    border: 1px solid #dfdfdf;
+}
+
+.to-top {
+  -webkit-animation-duration: 1.5s;
+  animation-duration: 1.5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-name: bounce;
+  animation-name: bounce;
+}
+
+.prod-bottom__table td:first-of-type {
+    width: 50%;
+}
+
+.tweet {
+  width:30px;
+  background: url(../img/facebook-btn.png) 0 0 no-repeat;
+}
+
+.m-cat__i {
+    text-align:center;
+}
+
+.m-cat__i img {
+    margin: 0 auto;
+}
+
+.lb-outerContainer .lb-container:after {
+    content: '';
+    display: block;
+    width: 142px;
+    height: 35px;
+    background: url(../img/watermark.png) 0 0 no-repeat;
+    position: absolute;
+    bottom: 20px;
+    right: 5px;
+    z-index: 2;
+}

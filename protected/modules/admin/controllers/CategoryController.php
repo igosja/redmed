@@ -12,8 +12,8 @@ class CategoryController extends AController
     public function actionIndex()
     {
         $model = $this->getModel('search');
-        $model->dbCriteria->order = '`order` ASC';
         $model->unsetAttributes();
+        $model->dbCriteria->order = '`order` ASC';
         if (isset($_GET[$this->model_name])) {
             $model->attributes = $_GET[$this->model_name];
         }

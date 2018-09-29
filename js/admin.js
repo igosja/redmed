@@ -41,6 +41,38 @@ $(document).ready(function ($) {
     }
 
     CGridViewAfterAjax();
+
+    $('.order-status').on('change', function () {
+        var item_id = $(this).data('order');
+        var status = $(this).val();
+        $.ajax({
+            url: '/admin/order/status/' + item_id + '?status=' + status,
+        });
+    });
+    
+    $(document).on('click', '.order-product-delete', function () {
+        $(this).parent().parent().remove();
+    });
+
+    $('.order-product-add').on('click', function () {
+        var rows = $('.order-product-table').find('tr');
+        var lastRow = rows[rows.length-1];
+        var lastKey = $(lastRow).data('key');
+        lastKey++;
+        var html = '<tr data-key="' + lastKey + '"><td class="col-lg-3">' +
+            $('.order-product-select-div').html() +
+            '</td>' +
+            '<td>' +
+            '<input class="form-control" type="text" value="1" name="Product[0][quantity]" id="Product_0_quantity">' +
+            '</td>' +
+            '<td><a href="javascript:" class="order-product-delete">Удалить</a></td></tr>';
+        html = html.replace("Product[0]", "Product[" + lastKey + "]");
+        html = html.replace("Product[0]", "Product[" + lastKey + "]");
+        html = html.replace("Product_0", "Product_" + lastKey);
+        html = html.replace("Product_0", "Product_" + lastKey);
+        console.log(html);
+        $(lastRow).after(html)
+    });
 });
 
 function status_change() {

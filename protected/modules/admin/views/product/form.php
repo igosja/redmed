@@ -33,6 +33,13 @@
             <div class="tab-pane fade in active" id="main">
                 <table class="table table-striped table-bordered table-hover">
                     <tr>
+                        <td class="col-lg-3"><?= $form->labelEx($model, 'sku'); ?></td>
+                        <td>
+                            <?= $form->textField($model, 'sku', array('class' => 'form-control')); ?>
+                            <?= $form->error($model, 'sku'); ?>
+                        </td>
+                    </tr>
+                    <tr>
                         <td class="col-lg-3"><?= $form->labelEx($model, 'category_id'); ?></td>
                         <td>
                             <?= $form->dropDownList($model, 'category_id',
@@ -86,6 +93,13 @@
                         </td>
                     </tr>
                     <tr>
+                        <td class="col-lg-3"><?= $form->labelEx($model, 'video'); ?></td>
+                        <td>
+                            <?= $form->textField($model, 'video', array('class' => 'form-control')); ?>
+                            <?= $form->error($model, 'video'); ?>
+                        </td>
+                    </tr>
+                    <tr>
                         <td class="col-lg-3"><?= $form->labelEx($model, 'pdf_field'); ?></td>
                         <td>
                             <input type="file" name="pdf[]" class="form-control" multiple="multiple" />
@@ -112,20 +126,6 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="col-lg-3"><?= $form->labelEx($model, 'text_ru'); ?></td>
-                        <td>
-                            <?= $form->textArea($model, 'text_ru', array('class' => 'ckeditor')); ?>
-                            <?= $form->error($model, 'text_ru'); ?>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-lg-3"><?= $form->labelEx($model, 'text_uk'); ?></td>
-                        <td>
-                            <?= $form->textArea($model, 'text_uk', array('class' => 'ckeditor')); ?>
-                            <?= $form->error($model, 'text_uk'); ?>
-                        </td>
-                    </tr>
-                    <tr>
                         <td class="col-lg-3"><?= $form->labelEx($model, 'table_ru'); ?></td>
                         <td>
                             <?= $form->textArea($model, 'table_ru', array('class' => 'form-control')); ?>
@@ -149,6 +149,20 @@
                         <td class="col-lg-3"><?= $form->labelEx($model, 'table_uk_excel'); ?></td>
                         <td>
                             <input type="file" name="table_uk_excel" class="form-control" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-lg-3"><?= $form->labelEx($model, 'text_ru'); ?></td>
+                        <td>
+                            <?= $form->textArea($model, 'text_ru', array('class' => 'ckeditor')); ?>
+                            <?= $form->error($model, 'text_ru'); ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-lg-3"><?= $form->labelEx($model, 'text_uk'); ?></td>
+                        <td>
+                            <?= $form->textArea($model, 'text_uk', array('class' => 'ckeditor')); ?>
+                            <?= $form->error($model, 'text_uk'); ?>
                         </td>
                     </tr>
                     <tr>

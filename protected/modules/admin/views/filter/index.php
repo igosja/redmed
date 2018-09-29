@@ -39,6 +39,13 @@
             'sortable' => false,
         ),
         array(
+            'name' => 'filtergroup_id',
+            'sortable' => false,
+            'value' => function ($model) {
+                return $model['filtergroup']['name_ru'];
+            }
+        ),
+        array(
             'headerHtmlOptions' => array('class' => 'col-lg-1, col-md-1, col-sm-1, col-xs-1'),
             'name' => 'status',
             'sortable' => false,

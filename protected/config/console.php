@@ -4,9 +4,9 @@ return array(
     'basePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..',
     'components' => array(
         'db' => array(
-            'connectionString' => 'mysql:host=localhost;dbname=igosja_redmed',
+            'connectionString' => 'mysql:host=motulm00.mysql.tools;dbname=motulm00_redmed',
             'emulatePrepare' => true,
-            'username' => 'igosja_redmed',
+            'username' => 'motulm00_redmed',
             'password' => 'jhsVyBI9pq',
             'charset' => 'utf8',
         ),

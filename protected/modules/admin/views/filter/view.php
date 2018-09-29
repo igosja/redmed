@@ -29,6 +29,10 @@ $attributes = array(
     'id',
     'h1_ru',
     'h1_uk',
+    array(
+        'name' => 'filtergroup_id',
+        'value' => $model['filtergroup']['name_ru'],
+    ),
 );
 $this->widget('zii.widgets.CDetailView', array(
     'attributes' => $attributes,

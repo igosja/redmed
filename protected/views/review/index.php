@@ -19,6 +19,7 @@
             <?= $o_page['h1_' . Yii::app()->language]; ?>
         </div>
     </div>
+    <?= $this->renderPartial('/include/bread'); ?>
     <div class="clearfix in-page wrap">
         <div class="otz-left">
             <div class="item-div">

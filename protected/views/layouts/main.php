@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="/css/normalize.min.css?v=<?= filemtime(__DIR__ . '/../../../css/normalize.min.css'); ?>">
     <link rel="stylesheet" href="/css/libs.css?v=<?= filemtime(__DIR__ . '/../../../css/libs.css'); ?>">
     <link rel="stylesheet" href="/css/main.css?v=<?= filemtime(__DIR__ . '/../../../css/main.css'); ?>">
-    <!--<link rel="stylesheet" href="css/mobile.css">-->
+    <link rel="stylesheet" href="/css/mobile.css?v=<?= filemtime(__DIR__ . '/../../../css/mobile.css'); ?>">
     <link rel="stylesheet" href="/css/site.css?v=<?= filemtime(__DIR__ . '/../../../css/site.css'); ?>">
     <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
 </head>
@@ -41,11 +41,11 @@
     <header class="header">
         <div class="header__t">
             <div class="wrap clearfix">
-                <a href="javascript:" class="header__phones__show"></a>
                 <div class="header__phones">
+                    <a href="javascript:" class="header__phones__show"></a>
                     <div class="header__phones__down">
-                        <span><?= $this->o_contact['phone_city']; ?></span>
-                        <span><?= $this->o_contact['phone_kyiv']; ?></span>
+                        <?php $phone = explode("\r\n", $this->o_contact['phone']);?>
+                        <span><?= implode($phone, '</span><span>'); ?></span>
                     </div>
                 </div>
                 <div class="header__adress">
@@ -86,7 +86,7 @@
                                 Yii::t('views.layouts.main', 'header-link-profile'),
                                 array('profile/index')
                             ); ?>
-                            <?= CHtml::link(
+                            <?php CHtml::link(
                                 Yii::t('views.layouts.main', 'header-link-product'),
                                 array('profile/product')
                             ); ?>
@@ -94,7 +94,7 @@
                                 Yii::t('views.layouts.main', 'header-link-order'),
                                 array('profile/order')
                             ); ?>
-                            <?= CHtml::link(
+                            <?php CHtml::link(
                                 Yii::t('views.layouts.main', 'header-link-info'),
                                 array('profile/info'),
                                 array('style' => 'width:145px;')
@@ -116,8 +116,8 @@
                         array('index/index')
                     ); ?>
                 </div>
-                <a href="javascript:" class="search-show"></a>
                 <nav class="nav">
+                    <a href="javascript:" class="show-menu"></a>
                     <ul>
                         <li>
                             <?= CHtml::link(
@@ -133,6 +133,7 @@
                             ); ?>
                             <div class="nav__drop">
                                 <div>
+                                    <a href="javascript:" class="nav__back"><?= Yii::t('views.layouts.main', 'header-link-catalog'); ?></a>
                                     <?php foreach ($this->a_category as $item) { ?>
                                         <?= CHtml::link(
                                             Yii::t('views.layouts.main', $item['h1_' . Yii::app()->language]),
@@ -171,10 +172,11 @@
                         <li>
                             <?= CHtml::link(
                                 Yii::t('views.layouts.main', 'header-link-news'),
-                                array('news/index'),
+                                array('newscategory/index'),
                                 array('class' => 'nav-btn')
                             ); ?>
                         </li>
+                        <li><a href="javascript:" class="search-show"></a></li>
                     </ul>
                 </nav>
             </div>
@@ -247,10 +249,79 @@
         </div>
     </div>
 </footer>
+<div class="cart-fix">
+    <a href="javascript:" data-selector="form-buy" class="cart-fix__btn overlayElementTrigger add-to-cart-on-page" data-product="0" <?php if (!$this->count_cart) { ?>style="display: none;"<?php } ?>>
+        <span><?= Yii::t('views.layouts.main', 'link-cart'); ?></span>
+    </a>
+    <?php if ($this->count_delivery) { ?>
+        <?= CHtml::link(
+            '<span>' . Yii::t('views.layouts.main', 'link-cart-in-progress') . '</span>',
+            array('profile/order'),
+            array('class' => 'cart-fix__btn cart-fix__btn_dost')
+        ); ?>
+    <?php } ?>
+</div>
 <section class="overlay-forms">
     <div class="form-overlay"></div>
     <div class="wrap">
-        <!-- Забыли пароль? -->
+        <div class="of-form form-buy">
+            <?php $form = $this->beginWidget('CActiveForm', array(
+                'id' => 'order-popup-form',
+                'enableAjaxValidation' => false,
+                'enableClientValidation' => true,
+                'clientOptions' => array(
+                    'validateOnSubmit' => true,
+                )
+            )); ?>
+            <div class="clearfix e-form__t">
+                <div class="e-form__title"><?= Yii::t('views.layouts.buy', 'title'); ?></div>
+                <div class="form-buy-product-list"></div>
+                <?= $form->textField($this->order, 'name', array(
+                    'class' => 'e-form__input',
+                    'placeholder' => Yii::t('views.layouts.buy', 'placeholder-name'),
+                )); ?>
+                <?= $form->error($this->order, 'name'); ?>
+                <?= $form->textField($this->order, 'phone', array(
+                    'class' => 'e-form__input phone_mask',
+                    'placeholder' => Yii::t('views.layouts.buy', 'placeholder-phone')
+                )); ?>
+                <?= $form->error($this->order, 'phone'); ?>
+                <?= $form->textField($this->order, 'email', array(
+                    'class' => 'e-form__input',
+                    'placeholder' => Yii::t('views.layouts.buy', 'placeholder-email')
+                )); ?>
+                <?= $form->error($this->order, 'email'); ?>
+                <?= $form->dropDownList(
+                    $this->order,
+                    'shipping',
+                    CHtml::listData(
+                        Shipping::model()->findAllByAttributes(array('status' => 1), array('order' => '`order`')),
+                        'name_ru',
+                        'name_' . Yii::app()->language
+                    ),
+                    array(
+                        'empty' => Yii::t('views.layouts.buy', 'option-shipping'),
+                        'class' => 'e-form__select'
+                    )
+                ); ?>
+                <?= $form->error($this->order, 'shipping'); ?>
+                <div class="form-buy__text form-buy-total-price">
+                    <span>Сума:</span> 0 грн
+                </div>
+                <div class="clearfix">
+                    <a href="javascript:" class="e-form__submit form-buy-more-btn">
+                        <?= Yii::t('views.layouts.buy', 'button-more'); ?>
+                    </a>
+                    <?= CHtml::submitButton(
+                        Yii::t('views.layouts.buy', 'button-submit'),
+                        array('class' => 'e-form__submit')
+                    )?>
+                </div>
+            </div>
+            <a href="javascript:" class="of-close"></a>
+            <?php $this->endWidget(); ?>
+        </div>
+
         <div class="of-form e-form form-password">
             <?php $form = $this->beginWidget('CActiveForm', array(
                 'enableAjaxValidation' => false,
@@ -271,6 +342,18 @@
                 </div>
                 <a href="javascript:" class="of-close"></a>
             <?php $this->endWidget(); ?>
+        </div>
+
+        <div class="of-form form-video">
+            <a href="javascript:" class="of-close"></a>
+            <iframe
+                width="100%"
+                height="100%"
+                src=""
+                frameborder="0"
+                allow="autoplay; encrypted-media"
+                allowfullscreen
+            ></iframe>
         </div>
 
         <?php if (Yii::app()->user->hasFlash('success-forget')) {

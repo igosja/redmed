@@ -16,6 +16,7 @@ $opened = true;
             <?= Yii::t('views.profile.product', 'h1'); ?>
         </div>
     </div>
+    <?= $this->renderPartial('/include/bread'); ?>
     <div class="clearfix in-page wrap">
         <h2 class="title title_lk">
             <img src="/img/lk-acrdn/lk-product-title.png"><?= Yii::t('views.profile.product', 'h2'); ?>
@@ -79,7 +80,7 @@ $opened = true;
                                     </td>
                                     <td>
                                         <?= Yii::app()->numberFormatter->formatDecimal(
-                                            $product['price']
+                                            $o_product->getPrice()
                                         ); ?> грн.
                                     </td>
                                     <td>-<?= $product['discount']; ?>%</td>
@@ -100,6 +101,7 @@ $opened = true;
                 <div class="lk-bottom__total">
                     <?= Yii::t('views.profile.product', 'your-order'); ?>:
                     <strong class="cart-total-count"><?= $count; ?> тов.</strong>
+                    <br class="br-total">
                     <?= Yii::t('views.profile.product', 'total'); ?>:
                     <strong class="cart-total-price"><?= Yii::app()->numberFormatter->formatDecimal($price); ?> грн.</strong>
                 </div>
@@ -127,7 +129,7 @@ $opened = true;
                         'class' => 'lk-input',
                         'placeholder' => Yii::t('views.profile.product', 'placeholder-email')
                     )); ?>
-                    <?= $form->error($model, 'phone'); ?>
+                    <?= $form->error($model, 'email'); ?>
                     <?= $form->textField($model, 'shipping', array(
                         'class' => 'lk-input',
                         'placeholder' => Yii::t('views.profile.product', 'placeholder-shipping')

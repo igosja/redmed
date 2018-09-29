@@ -16,6 +16,7 @@
             'name' => 'id',
         ),
         'phone',
+        'name',
         array(
             'filter' => false,
             'name' => 'date',
@@ -24,22 +25,16 @@
             }
         ),
         array(
-            'filter' => false,
+            'filter' => CHtml::listData( OrderStatus::model()->findAll(array('order' => 'name')), 'id', 'name'),
             'headerHtmlOptions' => array('class' => 'col-lg-1, col-md-1, col-sm-1, col-xs-1'),
             'name' => 'status',
-            'value' => function ($model) {
-                if (1 == $model->status) {
-                    $result = '';
-                } else {
-                    $result = 'NEW';
-                }
-                return $result;
+            'value' => function($model) {
+                return $model->orderstatus->name;
             }
         ),
         array(
             'class' => 'CButtonColumn',
             'headerHtmlOptions' => array('class' => 'col-lg-1'),
-            'template' => '{view} {delete}',
         ),
     );
     $this->widget('zii.widgets.grid.CGridView', array(

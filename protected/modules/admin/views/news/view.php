@@ -28,13 +28,13 @@
 $attributes = array(
     'id',
     array(
-        'name' => 'date',
-        'value' => date('H:i d.m.Y', $model['date']),
-    ),
-    array(
         'name' => 'url',
         'type' => 'raw',
         'value' => CHtml::link($model->url, array('/news/view', 'id' => $model['url']), array('target' => '_blank'))
+    ),
+    array(
+        'name' => 'newscategory_id',
+        'value' => $model['category']['h1_ru'],
     ),
     array(
         'name' => 'image_id',

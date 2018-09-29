@@ -79,6 +79,9 @@
                             <li>
                                 <?= CHtml::link('Заказы', array('order/index')); ?>
                             </li>
+                            <li>
+                                <?= CHtml::link('Статусы', array('orderstatus/index')); ?>
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -91,7 +94,16 @@
                                 <?= CHtml::link('Фильтры', array('filter/index')); ?>
                             </li>
                             <li>
+                                <?= CHtml::link('Группы фильтров', array('filtergroup/index')); ?>
+                            </li>
+                            <li>
                                 <?= CHtml::link('Категории', array('category/index')); ?>
+                            </li>
+                            <li>
+                                <?= CHtml::link('Варианты доставки', array('shipping/index')); ?>
+                            </li>
+                            <li>
+                                <?= CHtml::link('Оплата и доставка', array('productdelivery/index')); ?>
                             </li>
                             <li>
                                 <?= CHtml::link('SEO', array('pagecatalog/index')); ?>
@@ -103,6 +115,9 @@
                         <ul class="nav nav-second-level">
                             <li>
                                 <?= CHtml::link('Статьи', array('news/index')); ?>
+                            </li>
+                            <li>
+                                <?= CHtml::link('Категории', array('newscategory/index')); ?>
                             </li>
                             <li>
                                 <?= CHtml::link('SEO', array('pagenews/index')); ?>
@@ -177,6 +192,9 @@
                     </li>
                     <li>
                         <?= CHtml::link('Языки', array('language/index')); ?>
+                    </li>
+                    <li>
+                        <?= CHtml::link('Изображения', array('image/index')); ?>
                     </li>
                     <li>
                         <?= CHtml::link('Переводы', array('translate/index')); ?>

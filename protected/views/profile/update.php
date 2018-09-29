@@ -10,6 +10,7 @@
             <?= Yii::t('views.profile.update', 'h1'); ?>
         </div>
     </div>
+    <?= $this->renderPartial('/include/bread'); ?>
     <div class="clearfix in-page wrap">
         <h2 class="title title_profile"><?= Yii::t('views.profile.update', 'h2'); ?></h2>
         <div class="clearfix lk-form">

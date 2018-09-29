@@ -10,6 +10,7 @@ $opened = true;
             <?= Yii::t('views.profile.order', 'h1'); ?>
         </div>
     </div>
+    <?= $this->renderPartial('/include/bread'); ?>
     <div class="clearfix in-page wrap">
         <h2 class="title title_lk">
             <img src="/img/lk-acrdn/lk-order-title.png"><?= Yii::t('views.profile.order', 'h2'); ?>

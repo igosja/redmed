@@ -5,7 +5,7 @@
  */
 ?>
 <section class="content">
-    <div class="enter-bg">
+    <div class="enter-bg enter-bg_reg">
         <div class="wrap">
             <div class="e-form e-form__reg">
                 <?php $form = $this->beginWidget('CActiveForm', array(

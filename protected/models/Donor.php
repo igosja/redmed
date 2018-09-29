@@ -26,7 +26,7 @@ class Donor extends CActiveRecord
             'lat' => 'Первая координата Google-карты',
             'lng' => 'Вторая координата Google-карты',
             'phone_city' => 'Телефон (городской)',
-            'phone_mobile' => 'Телефон (мобильный)',
+            'phone_mobile' => 'Расписание',
             'status' => 'Статус',
         );
     }

@@ -9,6 +9,7 @@
             <?= $o_page['h1_' . Yii::app()->language]; ?>
         </div>
     </div>
+    <?= $this->renderPartial('/include/bread'); ?>
     <div class="clearfix in-page wrap">
         <img src="<?= ImageIgosja::resize($o_page['image_id'], 1280, 450) ?>" alt="<?= $o_page['h1_' . Yii::app()->language]; ?>" style="margin-bottom: 25px;">
         <h2 class="title"><?= $o_page['title_1_' . Yii::app()->language]; ?></h2>

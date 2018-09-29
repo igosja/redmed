@@ -22,12 +22,20 @@
                         array('class' => 'btn btn-default')
                     ); ?>
                 </li>
+                <li>
+                    <?= CHtml::link(
+                        'Дублировать',
+                        array('update', 'copy' => $model->primaryKey),
+                        array('class' => 'btn btn-default')
+                    ); ?>
+                </li>
             </ul>
         </div>
     </div>
 <?php
 $attributes = array(
     'id',
+    'sku',
     'h1_ru',
     'h1_uk',
     array(
@@ -45,6 +53,7 @@ $attributes = array(
     ),
     'price',
     'discount',
+    'video',
     array(
         'name' => 'pdf_field',
         'type' => 'raw',
@@ -101,12 +110,12 @@ $attributes = array(
         'name' => 'analog_field',
         'type' => 'raw',
         'value' => function ($model) {
-            $filter = array();
+            $analog = array();
             foreach ($model['analog'] as $item) {
-                $filter[] = $item['analog']['h1_ru'];
+                $analog[] = CHtml::link($item['analog']['h1_ru'], array('view', 'id' => $item['analog_id']), array('target' => '_blank'));
             }
-            $filter = implode('<br/>', $filter);
-            return $filter;
+            $analog = implode('<br/>', $analog);
+            return $analog;
         }
     ),
 );

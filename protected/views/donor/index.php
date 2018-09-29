@@ -10,12 +10,16 @@
             <?= $o_page['h1_' . Yii::app()->language]; ?>
         </div>
     </div>
+    <?= $this->renderPartial('/include/bread'); ?>
     <div class="clearfix in-page wrap">
         <img src="<?= ImageIgosja::resize($o_page['image_id'], 1280, 450) ?>" alt="<?= $o_page['h1_' . Yii::app()->language]; ?>" style="margin-bottom: 25px;">
         <h2 class="title"><?= $o_page['h2_' . Yii::app()->language]; ?></h2>
         <?= $o_page['text_' . Yii::app()->language]; ?>
         <div class="don-three clearfix">
             <div class="don-three__i">
+                <?php if ($o_page['url_1_' . Yii::app()->language]) { ?>
+                    <a href="<?= $o_page['url_1_' . Yii::app()->language]; ?>">
+                <?php } ?>
                 <img src="/img/don-three-i-1.png" alt="">
                 <div class="don-three__i__title">
                     <?= $o_page['title_1_' . Yii::app()->language]; ?>
@@ -23,8 +27,14 @@
                 <div class="don-three__i__text">
                     <?= $o_page['text_1_' . Yii::app()->language]; ?>
                 </div>
+                <?php if ($o_page['url_1_' . Yii::app()->language]) { ?>
+                    </a>
+                <?php } ?>
             </div>
             <div class="don-three__i">
+                <?php if ($o_page['url_2_' . Yii::app()->language]) { ?>
+                    <a href="<?= $o_page['url_2_' . Yii::app()->language]; ?>">
+                <?php } ?>
                 <img src="/img/don-three-i-2.png" alt="">
                 <div class="don-three__i__title">
                     <?= $o_page['title_2_' . Yii::app()->language]; ?>
@@ -32,8 +42,14 @@
                 <div class="don-three__i__text">
                     <?= $o_page['text_2_' . Yii::app()->language]; ?>
                 </div>
+                <?php if ($o_page['url_2_' . Yii::app()->language]) { ?>
+                    </a>
+                <?php } ?>
             </div>
             <div class="don-three__i">
+                <?php if ($o_page['url_3_' . Yii::app()->language]) { ?>
+                    <a href="<?= $o_page['url_3_' . Yii::app()->language]; ?>">
+                <?php } ?>
                 <img src="/img/don-three-i-3.png" alt="">
                 <div class="don-three__i__title">
                     <?= $o_page['title_3_' . Yii::app()->language]; ?>
@@ -41,6 +57,9 @@
                 <div class="don-three__i__text">
                     <?= $o_page['text_3_' . Yii::app()->language]; ?>
                 </div>
+                <?php if ($o_page['url_3_' . Yii::app()->language]) { ?>
+                    </a>
+                <?php } ?>
             </div>
         </div>
     </div>
@@ -50,10 +69,17 @@
             <?php foreach ($a_donor as $item) { ?>
                 <div
                         class="contacts-i"
+                        style="display:none;"
                         data-lat="<?= $item['lat']; ?>"
                         data-lng="<?= $item['lng']; ?>"
                         data-name="<?= $item['h1_' . Yii::app()->language]; ?>"
+                        data-address="<?= $item['address_' . Yii::app()->language]; ?>"
+                        data-phone="<?= $item['phone_city']; ?>"
+                        data-schedule="<?= $item['phone_mobile']; ?>"
                 >
+                    <div class="contacts-i__adress">
+                        <?= $item['h1_' . Yii::app()->language]; ?>
+                    </div>
                     <div class="contacts-i__adress">
                         <?= $item['address_' . Yii::app()->language]; ?>
                     </div>

@@ -2,6 +2,9 @@
 /**
  * @var $model Category
  */
+$dp = $model->search();
+$dp->pagination->pageSize = $model->count();
+$dp->sort = array('defaultOrder' => '`order` ASC');
 ?>
 <div class="row">
     <div class="col-lg-12">
@@ -69,7 +72,7 @@
     $this->widget('zii.widgets.grid.CGridView', array(
         'afterAjaxUpdate' => 'function(id, data){CGridViewAfterAjax()}',
         'columns' => $columns,
-        'dataProvider' => $model->search(),
+        'dataProvider' => $dp,
         'itemsCssClass' => 'table table-striped table-bordered sort-table',
         'htmlOptions' => array('data-controller' => $this->uniqueid),
         'pager' => array(
@@ -87,6 +90,7 @@
             'selectedPageCssClass' => 'active',
             'htmlOptions' => array('class' => 'pagination'),
         ),
+        'enablePagination' => false,
         'pagerCssClass' => 'pager-css-class',
         'rowHtmlOptionsExpression' => 'array("data-id" => $data->id, "data-controller" => "' . $this->uniqueid . '")',
         'summaryCssClass' => 'text-left',

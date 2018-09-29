@@ -26,6 +26,9 @@
             'name' => 'id',
         ),
         array(
+            'name' => 'sku',
+        ),
+        array(
             'name' => 'h1_ru',
         ),
         array(
@@ -54,6 +57,14 @@
         array(
             'class' => 'CButtonColumn',
             'headerHtmlOptions' => array('class' => 'col-lg-1'),
+            'template' => '{view}{update}{copy}{delete}',
+            'buttons' => array(
+                'copy' => array(
+                    'imageUrl' => Yii::app()->request->baseUrl . '/img/copy.png',
+                    'options' => array('title' => 'Дублировать'),
+                    'url' => 'Yii::app()->createUrl("admin/product/update", array("copy" => $data->id))',
+                )
+            )
         ),
     );
     $this->widget('zii.widgets.grid.CGridView', array(

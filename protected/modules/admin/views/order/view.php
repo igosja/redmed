@@ -14,12 +14,29 @@
                     array('class' => 'btn btn-default')
                 ); ?>
             </li>
+            <li>
+                <?= CHtml::link(
+                    'Изменить',
+                    array('update', 'id' => $model->primaryKey),
+                    array('class' => 'btn btn-default')
+                ); ?>
+            </li>
         </ul>
     </div>
 </div>
 <?php
 $attributes = array(
     'id',
+    array(
+        'name' => 'status',
+        'type' => 'raw',
+        'value' => CHtml::dropDownList(
+            'status',
+            $model['status'],
+            CHtml::listData(OrderStatus::model()->findAll(array('order' => 'name')), 'id', 'name'),
+            array('class' => 'form-control order-status', 'data-order' => $model['id'])
+        ),
+    ),
     array(
         'name' => 'date',
         'value' => date('H:i d.m.Y', $model['date']),
@@ -34,6 +51,7 @@ $attributes = array(
         ) : 'Удалён',
     ),
     'email',
+    'name',
     'phone',
     'shipping',
     array(

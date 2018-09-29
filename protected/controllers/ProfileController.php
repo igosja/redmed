@@ -136,7 +136,6 @@ class ProfileController extends Controller
         $this->seo_keywords = Yii::t('controllers.profile.product', 'seo-keywords');
         $this->breadcrumbs = array(
             Yii::t('controllers.profile.index', 'bread') => array('index'),
-            Yii::t('controllers.profile.view', 'bread') => array('view'),
             Yii::t('controllers.profile.product', 'bread'),
         );
         $this->render('product', array(
@@ -160,7 +159,6 @@ class ProfileController extends Controller
         $this->seo_keywords = Yii::t('controllers.profile.order', 'seo-keywords');
         $this->breadcrumbs = array(
             Yii::t('controllers.profile.index', 'bread') => array('index'),
-            Yii::t('controllers.profile.view', 'bread') => array('view'),
             Yii::t('controllers.profile.order', 'bread'),
         );
         $this->render('order', array(

@@ -2,8 +2,6 @@
 
 class Order extends CActiveRecord
 {
-    public $shipping_id;
-
     public function tableName()
     {
         return 'order';
@@ -13,9 +11,10 @@ class Order extends CActiveRecord
     {
         return array(
             array('email, phone, shipping', 'required'),
-            array('email, phone, shipping', 'length', 'max' => 255),
+            array('name', 'required', 'on' => 'neworder'),
+            array('email, phone, shipping, name', 'length', 'max' => 255),
             array('email', 'email'),
-            array('date, quantity, total, user_id', 'numerical'),
+            array('date, quantity, total, user_id, id, status', 'numerical'),
             array('comment', 'safe'),
         );
     }
@@ -27,6 +26,7 @@ class Order extends CActiveRecord
             'date' => 'Время',
             'email' => Yii::t('models.Order', 'label-email'),
             'phone' => Yii::t('models.Order', 'label-phone'),
+            'name' => Yii::t('models.Order', 'label-name'),
             'shipping' => Yii::t('models.Order', 'label-shipping'),
             'status' => 'Статус',
             'quantity' => 'Количество товаров',
@@ -83,6 +83,7 @@ class Order extends CActiveRecord
         return array(
             'product' => array(self::HAS_MANY, 'OrderProduct', array('order_id' => 'id')),
             'user' => array(self::HAS_ONE, 'User', array('id' => 'user_id')),
+            'orderstatus' => array(self::HAS_ONE, 'OrderStatus', array('id' => 'status')),
         );
     }
 
@@ -92,6 +93,7 @@ class Order extends CActiveRecord
 
         $criteria->compare('id', $this['id']);
         $criteria->compare('phone', $this['phone'], true);
+        $criteria->compare('status', $this['status']);
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,

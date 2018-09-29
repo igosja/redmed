@@ -39,6 +39,15 @@
                     <?= $form->error($model, 'h1_uk'); ?>
                 </td>
             </tr>
+            <tr>
+                <td class="col-lg-3"><?= $form->labelEx($model, 'filtergroup_id'); ?></td>
+                <td>
+                    <?= $form->dropDownList($model, 'filtergroup_id',
+                        CHtml::listData(FilterGroup::model()->findAll(), 'id', 'name_ru'),
+                        array('class' => 'form-control')); ?>
+                    <?= $form->error($model, 'filtergroup_id'); ?>
+                </td>
+            </tr>
         </table>
         <p class="text-center">
             <?= CHtml::submitButton('Сохранить', array('class' => 'btn btn-default text-center')); ?>

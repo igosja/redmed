@@ -33,6 +33,15 @@
             <div class="tab-pane fade in active" id="main">
                 <table class="table table-striped table-bordered table-hover">
                     <tr>
+                        <td class="col-lg-3"><?= $form->labelEx($model, 'newscategory_id'); ?></td>
+                        <td>
+                            <?= $form->dropDownList($model, 'newscategory_id',
+                                CHtml::listData(NewsCategory::model()->findAll(), 'id', 'h1_ru'),
+                                array('class' => 'form-control')); ?>
+                            <?= $form->error($model, 'newscategory_id'); ?>
+                        </td>
+                    </tr>
+                    <tr>
                         <td class="col-lg-3"><?= $form->labelEx($model, 'h1_ru'); ?></td>
                         <td>
                             <?= $form->textField($model, 'h1_ru', array('class' => 'form-control')); ?>

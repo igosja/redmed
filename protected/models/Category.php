@@ -10,10 +10,10 @@ class Category extends CActiveRecord
     public function rules()
     {
         return array(
-            array('h1_ru, h1_uk, seo_title_ru, seo_title_uk, url', 'length', 'max' => 255),
+            array('h1_ru, h1_uk, seo_title_ru, seo_title_uk, url, text_1_ru, text_1_uk', 'length', 'max' => 255),
             array('image_id, order, status', 'numerical'),
-            array('h1_ru, h1_uk, text_ru, text_uk', 'required'),
-            array(', seo_description_ru, seo_description_uk, seo_keywords_ru, seo_keywords_uk', 'safe'),
+            array('h1_ru, h1_uk', 'required'),
+            array('text_ru, text_uk, text_2_ru, text_2_uk, seotext_ru, seotext_uk, seo_description_ru, seo_description_uk, seo_keywords_ru, seo_keywords_uk', 'safe'),
         );
     }
 
@@ -25,12 +25,18 @@ class Category extends CActiveRecord
             'image_id' => 'Изображение',
             'text_ru' => 'Описание (Русский)',
             'text_uk' => 'Описание (Українська)',
+            'text_1_ru' => 'Заголовок вверху страницы (Русский)',
+            'text_1_uk' => 'Заголовок вверху страницы (Українська)',
+            'text_2_ru' => 'Текст вверху страницы (Русский)',
+            'text_2_uk' => 'Текст вверху страницы (Українська)',
             'seo_title_ru' => 'SEO title (Русский)',
             'seo_title_uk' => 'SEO title (Українська)',
             'seo_description_ru' => 'SEO description (Русский)',
             'seo_description_uk' => 'SEO description (Українська)',
             'seo_keywords_ru' => 'SEO keywords (Русский)',
             'seo_keywords_uk' => 'SEO keywords (Українська)',
+            'seotext_ru' => 'Тест в подвале (Русский)',
+            'seotext_uk' => 'Тест в подвале (Українська)',
             'status' => 'Статус',
             'url' => 'ЧП-URL',
         );

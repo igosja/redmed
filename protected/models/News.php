@@ -13,8 +13,8 @@ class News extends CActiveRecord
     {
         return array(
             array('h1_ru, h1_uk, seo_title_ru, seo_title_uk, url', 'length', 'max' => 255),
-            array('id, date, status', 'numerical'),
-            array('h1_ru, h1_uk, text_ru, text_uk', 'required'),
+            array('id, date, newscategory_id, status', 'numerical'),
+            array('h1_ru, h1_uk, text_ru, text_uk, newscategory_id', 'required'),
             array('seo_description_ru, seo_description_uk, seo_keywords_ru, seo_keywords_uk', 'safe'),
         );
     }
@@ -26,6 +26,7 @@ class News extends CActiveRecord
             'h1_ru' => 'Заголовок (Русский)',
             'h1_uk' => 'Заголовок (Українська)',
             'image_id' => 'Фото',
+            'newscategory_id' => 'Категория',
             'text_ru' => 'Текст (Русский)',
             'text_uk' => 'Текст (Українська)',
             'seo_title_ru' => 'SEO title (Русский)',
@@ -90,6 +91,7 @@ class News extends CActiveRecord
     {
         return array(
             'image' => array(self::HAS_ONE, 'Image', array('id' => 'image_id')),
+            'category' => array(self::HAS_ONE, 'NewsCategory', array('id' => 'newscategory_id')),
         );
     }
 

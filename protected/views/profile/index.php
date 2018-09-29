@@ -9,6 +9,7 @@
             <?= Yii::t('views.profile.index', 'h1'); ?>
         </div>
     </div>
+    <?= $this->renderPartial('/include/bread'); ?>
     <div class="clearfix in-page wrap">
         <h2 class="title">
             <?= Yii::t('views.profile.index', 'hello'); ?>,
@@ -26,18 +27,20 @@
                 array('class' => 'btn-more')
             ); ?>
         </div>
-        <div class="lk-m-item">
-            <img src="/img/lk-m-item-2.png" alt="">
-            <div class="lk-m-item__title"><?= Yii::t('views.profile.index', 'product'); ?></div>
-            <div class="lk-m-item__text">
-                <?= Yii::t('views.profile.index', 'order-product'); ?>
+        <?php if (false) { ?>
+            <div class="lk-m-item">
+                <img src="/img/lk-m-item-2.png" alt="">
+                <div class="lk-m-item__title"><?= Yii::t('views.profile.index', 'product'); ?></div>
+                <div class="lk-m-item__text">
+                    <?= Yii::t('views.profile.index', 'order-product'); ?>
+                </div>
+                <?= CHtml::link(
+                    Yii::t('views.profile.index', 'link-product'),
+                    array('product'),
+                    array('class' => 'btn-more')
+                ); ?>
             </div>
-            <?= CHtml::link(
-                Yii::t('views.profile.index', 'link-product'),
-                array('product'),
-                array('class' => 'btn-more')
-            ); ?>
-        </div>
+        <?php } ?>
         <div class="lk-m-item">
             <img src="/img/lk-m-item-3.png" alt="">
             <div class="lk-m-item__title"><?= Yii::t('views.profile.index', 'order'); ?></div>
@@ -50,17 +53,19 @@
                 array('class' => 'btn-more')
             ); ?>
         </div>
-        <div class="lk-m-item">
-            <img src="/img/lk-m-item-4.png" alt="">
-            <div class="lk-m-item__title"><?= Yii::t('views.profile.index', 'info'); ?></div>
-            <div class="lk-m-item__text">
-                <?= Yii::t('views.profile.index', 'catalog-and-other'); ?>
+        <?php if (false) { ?>
+            <div class="lk-m-item">
+                <img src="/img/lk-m-item-4.png" alt="">
+                <div class="lk-m-item__title"><?= Yii::t('views.profile.index', 'info'); ?></div>
+                <div class="lk-m-item__text">
+                    <?= Yii::t('views.profile.index', 'catalog-and-other'); ?>
+                </div>
+                <?= CHtml::link(
+                    Yii::t('views.profile.index', 'link-info'),
+                    array('info'),
+                    array('class' => 'btn-more')
+                ); ?>
             </div>
-            <?= CHtml::link(
-                Yii::t('views.profile.index', 'link-info'),
-                array('info'),
-                array('class' => 'btn-more')
-            ); ?>
-        </div>
+        <?php } ?>
     </div>
 </section>

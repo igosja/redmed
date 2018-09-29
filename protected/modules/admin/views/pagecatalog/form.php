@@ -45,6 +45,20 @@
                             <?= $form->error($model, 'h1_uk'); ?>
                         </td>
                     </tr>
+                    <tr>
+                        <td class="col-lg-3"><?= $form->labelEx($model, 'seotext_ru'); ?></td>
+                        <td>
+                            <?= $form->textArea($model, 'seotext_ru', array('class' => 'ckeditor')); ?>
+                            <?= $form->error($model, 'seotext_ru'); ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-lg-3"><?= $form->labelEx($model, 'seotext_uk'); ?></td>
+                        <td>
+                            <?= $form->textArea($model, 'seotext_uk', array('class' => 'ckeditor')); ?>
+                            <?= $form->error($model, 'seotext_uk'); ?>
+                        </td>
+                    </tr>
                 </table>
             </div>
             <?= $this->renderPartial('/include/seo-form', array('model' => $model, 'form' => $form)) ?>

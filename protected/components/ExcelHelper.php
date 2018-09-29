@@ -46,7 +46,16 @@ class ExcelHelper
             for ($j = 0, $count_item = count($array[$i]); $j < $count_item; $j++) {
                 $break = false;
                 if ($th) {
-                    $table .= '<th>' . $array[$i][$j] . '</th>';
+                    $table .= '<th';
+                    if (!$first) {
+                        $table .= ' colspan="' . $colspan . '"';
+                    } elseif (2 == $j) {
+                        $table .= ' colspan="' . ($colspan - 2) . '"';
+                        $break = true;
+                    } elseif ($first) {
+                        $table .= ' colspan="' . $colspan . '"';
+                    }
+                    $table .= '>' . $array[$i][$j] . '</th>';
                 } else {
                     $table .= '<td>' . $array[$i][$j] . '</td>';
                 }

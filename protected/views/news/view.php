@@ -13,6 +13,7 @@
             <?= CHtml::link($o_page['h1_' . Yii::app()->language], array('index')); ?>
         </div>
     </div>
+    <?= $this->renderPartial('/include/bread'); ?>
     <div class="clearfix in-page wrap">
         <div class="article-l clearfix">
             <h2 class="title"><?= $o_news['h1_' . Yii::app()->language]; ?></h2>
@@ -24,7 +25,7 @@
             <?= $o_news['text_' . Yii::app()->language]; ?>
             <div class="pager clearfix">
                 <div class="pager__l clearfix">
-                    <a href="javascript:" class="tweet"></a>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=<?= $this->createAbsoluteUrl('view', array('id' => $o_news['url'])); ?>" class="tweet" target="_blank"></a>
                     <div class="otz-i__date">
                         <?= date('d.m.Y / H:i', $o_news['date']); ?>
                     </div>

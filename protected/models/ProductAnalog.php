@@ -10,7 +10,6 @@ class ProductAnalog extends CActiveRecord
     public function rules()
     {
         return array(
-            array('name', 'length', 'max' => 255),
             array('analog_id, product_id', 'numerical'),
         );
     }

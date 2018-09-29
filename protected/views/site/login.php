@@ -32,7 +32,7 @@
                             </a>
                         </div>
                         <?= CHtml::submitButton(
-                            Yii::t('views.site.login', 'buuton-submit'),
+                            Yii::t('views.site.login', 'button-submit'),
                             array('class' => 'e-form__submit')
                         ); ?>
                     </div>

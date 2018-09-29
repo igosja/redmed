@@ -118,6 +118,20 @@
                         </td>
                     </tr>
                     <tr>
+                        <td class="col-lg-3"><?= $form->labelEx($model, 'url_1_ru'); ?></td>
+                        <td>
+                            <?= $form->textField($model, 'url_1_ru', array('class' => 'form-control')); ?>
+                            <?= $form->error($model, 'url_1_ru'); ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-lg-3"><?= $form->labelEx($model, 'url_1_uk'); ?></td>
+                        <td>
+                            <?= $form->textField($model, 'url_1_uk', array('class' => 'form-control')); ?>
+                            <?= $form->error($model, 'url_1_uk'); ?>
+                        </td>
+                    </tr>
+                    <tr>
                         <td class="col-lg-3"><?= $form->labelEx($model, 'title_2_ru'); ?></td>
                         <td>
                             <?= $form->textField($model, 'title_2_ru', array('class' => 'form-control')); ?>
@@ -146,6 +160,20 @@
                         </td>
                     </tr>
                     <tr>
+                        <td class="col-lg-3"><?= $form->labelEx($model, 'url_2_ru'); ?></td>
+                        <td>
+                            <?= $form->textField($model, 'url_2_ru', array('class' => 'form-control')); ?>
+                            <?= $form->error($model, 'url_2_ru'); ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-lg-3"><?= $form->labelEx($model, 'url_2_uk'); ?></td>
+                        <td>
+                            <?= $form->textField($model, 'url_2_uk', array('class' => 'form-control')); ?>
+                            <?= $form->error($model, 'url_2_uk'); ?>
+                        </td>
+                    </tr>
+                    <tr>
                         <td class="col-lg-3"><?= $form->labelEx($model, 'title_3_ru'); ?></td>
                         <td>
                             <?= $form->textField($model, 'title_3_ru', array('class' => 'form-control')); ?>
@@ -171,6 +199,20 @@
                         <td>
                             <?= $form->textArea($model, 'text_3_uk', array('class' => 'ckeditor')); ?>
                             <?= $form->error($model, 'text_3_uk'); ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-lg-3"><?= $form->labelEx($model, 'url_3_ru'); ?></td>
+                        <td>
+                            <?= $form->textField($model, 'url_3_ru', array('class' => 'form-control')); ?>
+                            <?= $form->error($model, 'url_3_ru'); ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-lg-3"><?= $form->labelEx($model, 'url_3_uk'); ?></td>
+                        <td>
+                            <?= $form->textField($model, 'url_3_uk', array('class' => 'form-control')); ?>
+                            <?= $form->error($model, 'url_3_uk'); ?>
                         </td>
                     </tr>
                 </table>

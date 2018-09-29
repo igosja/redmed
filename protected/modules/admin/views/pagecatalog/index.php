@@ -20,10 +20,20 @@
 <?php
 $attributes = array(
     'h1_ru',
+    array(
+        'name' => 'seotext_ru',
+        'type' => 'raw',
+        'value' => nl2br($model['seotext_ru']),
+    ),
     'seo_title_ru',
     'seo_description_ru',
     'seo_keywords_ru',
     'h1_uk',
+    array(
+        'name' => 'seotext_uk',
+        'type' => 'raw',
+        'value' => nl2br($model['seotext_uk']),
+    ),
     'seo_title_uk',
     'seo_description_uk',
     'seo_keywords_uk',

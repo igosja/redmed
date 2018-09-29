@@ -1,8 +1,10 @@
 <?php foreach ($this->a_category as $item) { ?>
     <div class="m-cat__i">
         <img
-            src="<?= ImageIgosja::resize($item['image_id'], 65, 60, 0); ?>"
+            src="<?= (isset($item['image']['url']) ? $item['image']['url'] : '/noimage.jpg'); ?>"
             alt="<?= $item['h1_' . Yii::app()->language]; ?>"
+            width="65"
+            height="60"
         />
         <div class="m-cat__i__title">
             <?= $item['h1_' . Yii::app()->language]; ?>

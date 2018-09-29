@@ -45,7 +45,9 @@ class User extends CActiveRecord
     {
         if (parent::beforeSave()) {
             if ($this->isNewRecord) {
+                $this['login'] = $this['email'];
                 $this['date'] = time();
+                $this['password'] = $this->hashPassword(substr(md5(mt_rand()), 0, 7));
             }
             if ($this->password_new) {
                 $this['password'] = $this->hashPassword($this->password_new);
